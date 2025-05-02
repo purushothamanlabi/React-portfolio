@@ -1,0 +1,26 @@
+@import "tailwindcss";
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background-color: #0f1115;
+}
+
+/* Optional: Add this if you want the noise effect to be more visible */
+.noise {
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E");
+}
+
+:root {
+  --primary-color: #0f1115;
+  --secondary-color: #1a1f2e;
+  --accent-color: #3b82f6;
+  --text-primary: #ffffff;
+  --text-secondary: #9ca3af;
+  --glass-bg: rgba(17, 25, 40, 0.28);
+  --glass-border: rgba(255, 255, 255, 0.125);
+  --blur-amount: 25px;
+  --transition-speed: 300ms;
+}

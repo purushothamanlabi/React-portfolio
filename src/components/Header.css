@@ -1,0 +1,75 @@
+/* Button styles */
+.glow-wrapper {
+  position: relative;
+  isolation: isolate;
+}
+
+.hover-glow-button {
+  position: relative;
+  transition: transform 0.3s ease, box-shadow 0.3s ease, background-color 0.3s ease, color 0.3s ease;
+  overflow: hidden;
+}
+
+/* Add subtle hover effects */
+.hover-glow-button:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+  background-color: white;
+  color: rgb(30, 64, 175);
+}
+
+.hover-glow-button:active {
+  transform: translateY(1px);
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+/* Mouse tracking glow */
+.mouse-glow {
+  position: absolute;
+  width: 80px;
+  height: 80px;
+  transform: translate(-50%, -50%);
+  border-radius: 50%;
+  background: radial-gradient(
+    circle,
+    rgba(255, 255, 255, 0.9) 0%,
+    rgba(150, 200, 255, 0.8) 30%,
+    rgba(100, 150, 255, 0.4) 60%,
+    transparent 100%
+  );
+  pointer-events: none;
+  z-index: 0;
+  opacity: 0;
+  filter: blur(10px);
+  transition: opacity 0.3s ease;
+  mix-blend-mode: soft-light;
+  will-change: left, top;
+}
+
+/* Add a subtle "pop" effect on click */
+@keyframes pop {
+  0% { transform: translate(-50%, -50%) scale(1); opacity: 0.8; }
+  50% { transform: translate(-50%, -50%) scale(1.2); opacity: 0.9; }
+  100% { transform: translate(-50%, -50%) scale(1); opacity: 0.8; }
+}
+
+/* Add subtle border glow */
+.hover-glow-button::before {
+  content: '';
+  position: absolute;
+  inset: -2px;
+  border-radius: 9999px;
+  background: linear-gradient(
+    45deg, 
+    rgba(120, 170, 255, 0.2),
+    rgba(255, 255, 255, 0.3),
+    rgba(120, 170, 255, 0.2)
+  );
+  z-index: -1;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.hover-glow-button:hover::before {
+  opacity: 1;
+} 
