@@ -64,29 +64,29 @@ export const Education = () => {
   ];
 
   return (
-    <section id="education" className="py-20 bg-[#0f0f14]">
-      <div className="container mx-auto px-4">
+    <section id="education" className="py-20 bg-[#0f0f14] overflow-x-hidden w-full">
+      <div className="container mx-auto px-2 sm:px-4 w-full max-w-full">
         <h2 className="text-4xl font-bold text-center text-white mb-12">
           Educational Journey
         </h2>
         
-        <div className="relative max-w-5xl mx-auto">
+        <div className="relative w-full max-w-5xl mx-auto">
           {/* Center timeline line */}
-          <div className="absolute left-1/2 transform -translate-x-1/2 h-full w-1 bg-blue-500"></div>
+          <div className="absolute left-1/2 transform -translate-x-1/2 h-full w-[2px] bg-blue-500"></div>
           
           {educationRows.map((row, rowIndex) => (
-            <div key={`row-${rowIndex}`} className="relative mb-14">
+            <div key={`row-${rowIndex}`} className="relative mb-14 w-full">
               {/* Timeline dot */}
               {/* <div className="absolute left-1/2 transform -translate-x-1/2 top-6 w-4 h-4 rounded-full bg-blue-500 z-10"></div> */}
               
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-6 w-full max-w-full">
                 {/* Left card */}
                 <div className="md:pr-8">
                 <motion.div
   initial={{ opacity: 0, x: -50 }}
   whileInView={{ opacity: 1, x: 0 }}
   transition={{ duration: 0.5, ease: "easeOut" }}
-  className="bg-[#1b2738]/20 p-6 rounded-lg shadow-lg flex flex-col items-center text-center border border-blue-500/30 backdrop-blur-sm w-full"
+  className="bg-[#1b2738]/20 p-6 rounded-lg shadow-lg flex flex-col items-center text-center border border-blue-500/30 backdrop-blur-sm w-full max-w-full overflow-x-auto"
 >
 
                     <h3 className="text-2xl font-bold text-white mb-1">{row.left.degree}</h3>
@@ -105,7 +105,7 @@ export const Education = () => {
   initial={{ opacity: 0, x: 50 }}
   whileInView={{ opacity: 1, x: 0 }}
   transition={{ duration: 0.5, ease: "easeOut" }}
-  className="bg-[#1b2738]/20 p-6 rounded-lg shadow-lg flex flex-col items-center text-center border border-blue-500/30 backdrop-blur-sm w-full"
+  className="bg-[#1b2738]/20 p-6 rounded-lg shadow-lg flex flex-col items-center text-center border border-blue-500/30 backdrop-blur-sm w-full max-w-full overflow-x-auto"
 >
 
                     <h3 className="text-2xl font-bold text-white mb-1">{row.right.degree}</h3>

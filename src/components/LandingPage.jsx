@@ -41,47 +41,47 @@ const LandingPage = () => {
       {/* Floating Elements */}
       <FloatingElement 
         delay={0} 
-        className="absolute top-[20%] left-[15%] z-10"
+        className="absolute top-[18%] left-[8%] z-10 sm:top-[20%] sm:left-[15%]"
       >
-        <div className="bg-purple-500/90 backdrop-blur-sm rounded-lg px-4 py-2 text-white">
-          <span className="text-sm font-medium">React.js</span>
+        <div className="bg-purple-500/90 backdrop-blur-sm rounded-lg px-3 py-1 text-white sm:px-4 sm:py-2">
+          <span className="text-xs sm:text-sm font-medium">React.js</span>
         </div>
       </FloatingElement>
 
       <FloatingElement 
         delay={0} 
-        className="absolute bottom-[20%] left-[15%] z-10"
+        className="absolute bottom-[18%] left-[8%] z-10 sm:bottom-[20%] sm:left-[15%]"
       >
-        <div className="bg-[#800080]/90 backdrop-blur-sm rounded-lg px-4 py-2 text-white">
-            <span className="text-sm font-medium">Node.js</span>
+        <div className="bg-[#800080]/90 backdrop-blur-sm rounded-lg px-3 py-1 text-white sm:px-4 sm:py-2">
+            <span className="text-xs sm:text-sm font-medium">Node.js</span>
         </div>
       </FloatingElement>
 
       <FloatingElement 
         delay={0.5} 
-        className="absolute top-[15%] right-[20%] z-10"
+        className="absolute top-[10%] right-[8%] z-10 sm:top-[15%] sm:right-[20%]"
       >
-        <div className="bg-emerald-500/90 backdrop-blur-sm rounded-lg px-4 py-2 text-white">
-          <span className="text-sm font-medium">Redux.js</span>
+        <div className="bg-emerald-500/90 backdrop-blur-sm rounded-lg px-3 py-1 text-white sm:px-4 sm:py-2">
+          <span className="text-xs sm:text-sm font-medium">Redux.js</span>
         </div>
       </FloatingElement>
 
       <FloatingElement 
         delay={1} 
-        className="absolute bottom-[30%] right-[15%] z-10"
+        className="absolute bottom-[28%] right-[8%] z-10 sm:bottom-[30%] sm:right-[15%]"
       >
-        <div className="bg-orange-500/90 backdrop-blur-sm rounded-lg px-4 py-2 text-white">
-          <span className="text-sm font-medium">MySql</span>
+        <div className="bg-orange-500/90 backdrop-blur-sm rounded-lg px-3 py-1 text-white sm:px-4 sm:py-2">
+          <span className="text-xs sm:text-sm font-medium">MySql</span>
         </div>
       </FloatingElement>
 
       {/* Main Content */}
-      <div className="text-center max-w-4xl mx-auto px-4 relative z-10">
+      <div className="text-center max-w-4xl mx-auto px-2 sm:px-4 relative z-10">
         <motion.div 
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, ease: "easeOut" }}
-          className="mb-6 text-white"
+          className="mb-4 sm:mb-6 text-white"
         >
           <TrueFocus
             sentence="Full Stack Web Developer"
@@ -91,6 +91,7 @@ const LandingPage = () => {
             glowColor="rgba(0, 255, 255, 0.6)"
             animationDuration={0.5}
             pauseBetweenAnimations={1}
+            className="text-2xl sm:text-4xl"
           />
         </motion.div>
 
@@ -98,9 +99,9 @@ const LandingPage = () => {
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, delay: 0.2, ease: "easeOut" }}
-          className="mb-12 text-white"
+          className="mb-8 sm:mb-12 text-white"
         >
-          <p className="text-xl leading-relaxed">
+          <p className="text-base sm:text-xl leading-relaxed">
             I'm a <span className="text-cyan-400 font-semibold">full-stack</span> developer specializing in building <span className="text-cyan-400 font-semibold">exceptional</span> <span className="text-cyan-400 font-semibold">digital</span> experiences. Currently focused on building <span className="text-cyan-400 font-semibold">responsive</span> web applications with <span className="text-cyan-400 font-semibold">modern</span> technologies.
           </p>
         </motion.div>
@@ -124,12 +125,12 @@ const LandingPage = () => {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.4, ease: "easeOut" }}
-            className="flex justify-center gap-4 relative z-10"
+            className="flex flex-col sm:flex-row justify-center gap-4 sm:gap-4 relative z-10"
           >
-            <button className="bg-blue-600 hover:bg-blue-700 text-white px-8 py-3 rounded-full font-medium transition-colors">
+            <button className="bg-blue-600 hover:bg-blue-700 text-white px-6 py-3 sm:px-8 rounded-full font-medium transition-colors mb-2 sm:mb-0">
               Download CV
             </button>
-            <button className="bg-gray-800/50 backdrop-blur-sm hover:bg-gray-700 text-white px-8 py-3 rounded-full font-medium transition-colors">
+            <button className="bg-gray-800/50 backdrop-blur-sm hover:bg-gray-700 text-white px-6 py-3 sm:px-8 rounded-full font-medium transition-colors">
               Contact Me
             </button>
           </motion.div>

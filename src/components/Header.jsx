@@ -119,8 +119,8 @@ const Header = () => {
 
         {/* Mobile Menu */}
         {isOpen && (
-          <div className="md:hidden absolute top-full left-0 right-0 mt-2 bg-[rgba(17,25,40,0.9)] backdrop-blur-lg py-4">
-            <ul className="flex flex-col space-y-4 px-4">
+          <div className="md:hidden absolute top-full left-0 right-0 mt-2 bg-[rgba(17,25,40,0.5)] backdrop-blur-lg py-4 border-b border-gray-700/40 shadow-lg">
+            <ul className="flex flex-col items-center text-center space-y-4 px-4">
               {menu.map((item) => (
                 <li key={item.href}>
                   <a
