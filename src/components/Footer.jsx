@@ -1,54 +1,88 @@
 import React from 'react';
-import { FaFacebook, FaTwitter, FaInstagram, FaYoutube, FaRss } from 'react-icons/fa';
+import { FaFacebook, FaInstagram, FaTwitter, FaLinkedin, FaYoutube } from 'react-icons/fa';
 
-const socialIcons = [
-  { href: '#', label: 'Facebook', icon: '🌐' },
-  { href: '#', label: 'Twitter', icon: '🐦' },
-  { href: '#', label: 'Instagram', icon: '📸' },
-  { href: '#', label: 'YouTube', icon: '▶️' },
-  { href: '#', label: 'RSS', icon: '📰' },
+const footerColumns = [
+  {
+    heading: 'Main',
+    links: [
+      { label: 'Home', href: '#' },
+      { label: 'About', href: '#' },
+      { label: 'Projects', href: '#' },
+      { label: 'Project Single', href: '#' },
+    ],
+  },
+  {
+    heading: 'Others',
+    links: [
+      { label: 'Services', href: '#' },
+      { label: 'Blog', href: '#' },
+      { label: 'Blog single', href: '#' },
+      { label: 'Contact', href: '#' },
+    ],
+  },
+  {
+    heading: 'Utility Pages',
+    links: [
+      { label: 'Style Guide', href: '#' },
+      { label: 'Licenses', href: '#' },
+      { label: 'Changelog', href: '#' },
+      { label: 'Password Protected', href: '#' },
+      { label: '404 Page', href: '#' },
+    ],
+  },
+  {
+    heading: 'Follow us',
+    links: [
+      { label: 'Facebook', href: '#', icon: <FaFacebook className="inline-block mr-3 w-5 h-5" /> },
+      { label: 'Instagram', href: '#', icon: <FaInstagram className="inline-block mr-3 w-5 h-5" /> },
+      { label: 'Twitter', href: '#', icon: <FaTwitter className="inline-block mr-3 w-5 h-5" /> },
+      { label: 'LinkedIn', href: '#', icon: <FaLinkedin className="inline-block mr-3 w-5 h-5" /> },
+      { label: 'Youtube', href: '#', icon: <FaYoutube className="inline-block mr-3 w-5 h-5" /> },
+    ],
+  },
 ];
-
-const footerLinks = [
-  'Sitemap',
-  'About',
-  'Need Help?',
-  'Lifehacker Shop',
-  'Privacy',
-  'Terms of Use',
-  'Advertising',
-  'Jobs',
-];
-
-
 
 const Footer = () => {
   return (
-    <footer className="bg-[#18191B] text-gray-400 pt-10 pb-4">
-      <div className="container mx-auto flex flex-col items-center">
-        {/* Social Icons */}
-        <div className="flex gap-4 mb-6">
-          {socialIcons.map((icon, idx) => (
-            <a key={idx} href={icon.href} aria-label={icon.label} className="text-2xl hover:text-white transition-colors">
-              {icon.label === 'Facebook' && <FaFacebook className="w-6 h-6" />}
-              {icon.label === 'Twitter' && <FaTwitter className="w-6 h-6" />}
-              {icon.label === 'Instagram' && <FaInstagram className="w-6 h-6" />}
-              {icon.label === 'YouTube' && <FaYoutube className="w-6 h-6" />}
-              {icon.label === 'RSS' && <FaRss className="w-6 h-6" />}
-            </a>
-          ))}
+    <footer className="bg-black text-white pt-12">
+      {/* CTA Section */}
+      <div className="max-w-6xl mx-auto px-4 text-left">
+        <h2 className="text-4xl sm:text-5xl md:text-6xl font-extrabold leading-tight mb-8">
+          Let's work together<br />
+          and build cool things!
+        </h2>
+        <a
+          href="#"
+          className="inline-block bg-[#A259FF] hover:bg-[#8e3fff] text-white font-medium text-lg px-8 py-4 rounded-md mb-16 transition-colors duration-200 shadow-lg"
+        >
+          Get Started <span className="ml-2">→</span>
+        </a>
+      </div>
+      {/* Footer Links Grid */}
+      <div className="max-w-6xl mx-auto px-4 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-10 md:gap-8 pb-12">
+        {footerColumns.map((col, idx) => (
+          <div key={col.heading}>
+            <h3 className="font-bold mb-4 text-lg">{col.heading}</h3>
+            <ul className="space-y-2">
+              {col.links.map(link => (
+                <li key={link.label}>
+                  <a href={link.href} className="hover:underline hover:text-[#A259FF] transition-colors flex items-center">
+                    {link.icon && link.icon}
+                    {link.label}
+                  </a>
+                </li>
+              ))}
+            </ul>
+          </div>
+        ))}
+      </div>
+      {/* Bottom Bar */}
+      <div className="border-t border-gray-800 py-4 px-4 flex flex-col md:flex-row items-center justify-between max-w-6xl mx-auto text-sm text-gray-400">
+        <div className="mb-2 md:mb-0">
+          Design by <a href="#" className="underline hover:text-[#A259FF]">Quix Studio</a>
         </div>
-        {/* Footer Links */}
-        <div className="flex flex-wrap justify-center gap-6 mb-6 text-sm">
-          {footerLinks.map((link, idx) => (
-            <a key={idx} href="#" className="hover:text-white transition-colors">{link}</a>
-          ))}
-        </div>
-        {/* Network Icons */}
-
-        {/* Copyright */}
-        <div className="text-xs text-center text-gray-500">
-          © 2025 G/O Media Inc.
+        <div>
+          2024@Quix™ Studio. All Rights Reserved
         </div>
       </div>
     </footer>

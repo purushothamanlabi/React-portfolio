@@ -14,7 +14,7 @@ const App = () => {
     <div className="min-h-screen">
       <Header />
       <LandingPage />
-      {/* <About /> */}
+      <About />
       <Skills />
       <Education/>
       <Certificates/>
