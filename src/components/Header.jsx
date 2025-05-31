@@ -1,5 +1,4 @@
 import { useState, useRef, useEffect } from 'react';
-import './Header.css'; // We'll create this file next
 
 const Header = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -99,10 +98,10 @@ const Header = () => {
           </ul>
 
           {/* Contact Button */}
-          <div className="glow-wrapper relative">
+          <div className="relative isolate">
             <button 
               ref={buttonRef}
-              className="hover-glow-button relative z-10 bg-white text-black px-6 sm:px-8 py-2 rounded-full flex items-center text-sm sm:text-base font-medium overflow-hidden"
+              className="relative z-10 bg-white text-black px-6 sm:px-8 py-2 rounded-full flex items-center text-sm sm:text-base font-medium overflow-hidden transition-all duration-300 ease-in-out hover:-translate-y-0.5 hover:shadow-lg hover:bg-white hover:text-blue-800 active:translate-y-0.5 active:shadow-md before:absolute before:inset-[-2px] before:rounded-full before:bg-gradient-to-r before:from-[rgba(120,170,255,0.2)] before:via-[rgba(255,255,255,0.3)] before:to-[rgba(120,170,255,0.2)] before:opacity-0 before:transition-opacity before:duration-300 before:z-[-1] hover:before:opacity-100"
               onClick={() => {
                 const contactSection = document.querySelector('#contact');
                 contactSection.scrollIntoView({ behavior: 'smooth' });
@@ -112,7 +111,10 @@ const Header = () => {
               <svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4 ml-2 relative z-10" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
               </svg>
-              <span ref={glowRef} className="mouse-glow"></span>
+              <span 
+                ref={glowRef} 
+                className="absolute w-20 h-20 -translate-x-1/2 -translate-y-1/2 rounded-full bg-[radial-gradient(circle,rgba(255,255,255,0.9)_0%,rgba(150,200,255,0.8)_30%,rgba(100,150,255,0.4)_60%,transparent_100%)] pointer-events-none z-0 opacity-0 blur-[10px] transition-opacity duration-300 ease-in-out mix-blend-soft-light will-change-[left,top]"
+              ></span>
             </button>
           </div>
         </div>

@@ -7,7 +7,6 @@ import Projects from './components/Projects'
 import ContactMe from './components/ContactMe'
 import Footer from './components/Footer'
 import Certificates from './components/Certificates'
-import { Education } from './components/Education'
 
 const App = () => {
   return (
@@ -16,8 +15,6 @@ const App = () => {
       <LandingPage />
       <About />
       <Skills />
-      <Education/>
-      <Certificates/>
       <Projects />
       <ContactMe />
       <Footer />
