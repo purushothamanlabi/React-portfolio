@@ -1,8 +1,8 @@
 import { motion, useMotionValue, useSpring, useTransform, AnimatePresence } from "framer-motion";
 import { useState } from "react";
-import BlurText from "../util/BlurText";
-import Circle from "../util/Circle";
-import TrueFocus from "../util/textBlur";
+import BlurText from "../Animation/BlurText";
+import Circle from "../Animation/Circle";
+import TrueFocus from "../Animation/textBlur";
 
 const FloatingElement = ({ children, delay = 0, className = "" }) => {
   return (

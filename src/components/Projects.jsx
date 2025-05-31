@@ -1,90 +1,58 @@
 import React from 'react';
-import { motion } from 'framer-motion';
-import SpotlightCard from '../util/card';
 
 const Projects = () => {
   const projects = [
     {
       id: 1,
-      title: "E-Commerce Platform",
-      description: "A full-stack e-commerce platform built with React, Node.js, and MongoDB. Features include user authentication, product management, and payment integration.",
-      image: "/img/Programming-pana.png",
-      tech: ["React", "Node.js", "MongoDB", "Express"],
+      title: "BookNook.in",
+      description: "A full-stack e-commerce platform for books built with React, Node.js, and MongoDB. Features include user authentication, product management, and a responsive design.",
+      image: "/project/booknook.png",
+      tech: ["React", "Node.js", "MongoDB", "Express", "Tailwind CSS"],
       demoLink: "#",
       githubLink: "#"
     },
     {
       id: 2,
-      title: "Task Management App",
-      description: "A real-time task management application with collaborative features. Built using React and Firebase with real-time updates.",
-      image: "/img/Programming-pana.png",
-      tech: ["React", "Firebase", "Tailwind CSS"],
+      title: "UTest.com",
+      description: "A comprehensive testing platform for students. Features include quiz creation, real-time testing, and result analytics.",
+      image: "/project/utest.png",
+      tech: ["React", "Node.js", "MongoDB", "Express", "Tailwind CSS"],
       demoLink: "#",
       githubLink: "#"
     },
     {
       id: 3,
-      title: "Portfolio Website",
-      description: "A modern portfolio website built with React and Framer Motion. Features smooth animations and interactive elements.",
-      image: "/img/Programming-pana.png",
-      tech: ["React", "Framer Motion", "Tailwind CSS"],
+      title: "Reptix.ai",
+      description: "A modern task management application with a sleek UI. Built using React and Firebase with real-time updates and user authentication.",
+      image: "/project/reptix.png",
+      tech: ["React", "Firebase", "Tailwind CSS", "Framer Motion"],
       demoLink: "#",
       githubLink: "#"
-    }
+    },
   ];
 
-  const containerVariants = {
-    hidden: {},
-    visible: {
-      transition: {
-        staggerChildren: 0.1
-      }
-    }
-  };
-
-  const itemVariants = {
-    hidden: { 
-      opacity: 0,
-      y: 20
-    },
-    visible: {
-      opacity: 1,
-      y: 0,
-      transition: {
-        duration: 0.6,
-        ease: "easeOut"
-      }
-    }
-  };
-
   return (
-    <section id="projects" className="py-20">
+    <section id="projects" className="py-20 bg-[#0f0f14]">
       <div className="container mx-auto px-6">
         <h2 className="text-4xl font-bold text-center mb-12 text-white">
-          Featured Projects
+          Products by me 
         </h2>
         
-        <motion.div
-          variants={containerVariants}
-          initial="hidden"
-          whileInView="visible"
-          viewport={{ once: true }}
-          className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8"
-        >
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
           {projects.map((project) => (
-            <motion.div key={project.id} variants={itemVariants}>
-              <SpotlightCard 
-                className="h-full"
-                spotlightColor="rgba(59, 130, 246, 0.2)" // Blue spotlight
-              >
+            <div key={project.id}>
+              <div className="h-full bg-neutral-900/50 backdrop-blur-sm rounded-xl p-8 border border-neutral-800">
                 <div className="h-full flex flex-col">
-                  <div className="relative h-48 -mx-8 -mt-8 mb-6">
+                  <div className="relative h-64 -mx-8 -mt-8 mb-6 overflow-hidden">
                     <img 
                       src={project.image} 
                       alt={project.title} 
-                      className="w-full h-full object-cover"
+                      className="w-full h-full object-contain"
+                      onError={(e) => {
+                        console.error(`Error loading image: ${project.image}`);
+                        e.target.src = 'https://via.placeholder.com/400x300?text=Project+Image';
+                      }}
                     />
-                    <div className="absolute inset-0 bg-gradient-to-t from-neutral-900 to-transparent" />
                   </div>
                   
                   <h3 className="text-xl font-bold text-white mb-3">
@@ -129,10 +97,10 @@ const Projects = () => {
                     </div>
                   </div>
                 </div>
-              </SpotlightCard>
-            </motion.div>
+              </div>
+            </div>
           ))}
-        </motion.div>
+        </div>
       </div>
     </section>
   );

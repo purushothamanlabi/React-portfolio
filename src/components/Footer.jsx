@@ -1,81 +1,49 @@
 import React from 'react';
 import { FaFacebook, FaInstagram, FaTwitter, FaLinkedin, FaYoutube } from 'react-icons/fa';
 
-const footerColumns = [
-  {
-    heading: 'Main',
-    links: [
-      { label: 'Home', href: '#' },
-      { label: 'About', href: '#' },
-      { label: 'Projects', href: '#' },
-      { label: 'Project Single', href: '#' },
-    ],
-  },
-  {
-    heading: 'Others',
-    links: [
-      { label: 'Services', href: '#' },
-      { label: 'Blog', href: '#' },
-      { label: 'Blog single', href: '#' },
-      { label: 'Contact', href: '#' },
-    ],
-  },
-  {
-    heading: 'Utility Pages',
-    links: [
-      { label: 'Style Guide', href: '#' },
-      { label: 'Licenses', href: '#' },
-      { label: 'Changelog', href: '#' },
-      { label: 'Password Protected', href: '#' },
-      { label: '404 Page', href: '#' },
-    ],
-  },
-  {
-    heading: 'Follow us',
-    links: [
-      { label: 'Facebook', href: '#', icon: <FaFacebook className="inline-block mr-3 w-5 h-5" /> },
-      { label: 'Instagram', href: '#', icon: <FaInstagram className="inline-block mr-3 w-5 h-5" /> },
-      { label: 'Twitter', href: '#', icon: <FaTwitter className="inline-block mr-3 w-5 h-5" /> },
-      { label: 'LinkedIn', href: '#', icon: <FaLinkedin className="inline-block mr-3 w-5 h-5" /> },
-      { label: 'Youtube', href: '#', icon: <FaYoutube className="inline-block mr-3 w-5 h-5" /> },
-    ],
-  },
+const socialLinks = [
+  { label: 'Facebook', href: '#', icon: FaFacebook },
+  { label: 'Instagram', href: '#', icon: FaInstagram },
+  { label: 'Twitter', href: '#', icon: FaTwitter },
+  { label: 'LinkedIn', href: '#', icon: FaLinkedin },
+  { label: 'Youtube', href: '#', icon: FaYoutube },
 ];
 
 const Footer = () => {
   return (
     <footer className="bg-black text-white pt-12">
-      {/* CTA Section */}
-      <div className="max-w-6xl mx-auto px-4 text-center pb-12">
-        <h2 className="text-4xl sm:text-5xl md:text-6xl font-extrabold leading-tight mb-8">
-          Let's work together<br />
-          and build cool things!
-        </h2>
-        <a
-          href="#"
-          className="inline-block bg-[#A259FF] hover:bg-[#8e3fff] text-white font-medium text-lg px-8 py-4 rounded-md transition-colors duration-200 shadow-lg"
-        >
-          Get Started <span className="ml-2">→</span>
-        </a>
-      </div>
+      {/* Main Content Section */}
+      <div className="max-w-6xl mx-auto px-4 pb-12">
+        <div className="flex flex-col md:flex-row justify-between items-start gap-12">
+          {/* Left Side - CTA */}
+          <div className="md:w-1/2 text-left">
+            <h2 className="text-2xl sm:text-3xl font-extrabold leading-tight mb-8">
+              Let's work together<br />
+              and build cool things!
+            </h2>
+          </div>
 
-      {/* Footer Links Grid */}
-      <div className="max-w-6xl mx-auto px-4 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-10 md:gap-8 pb-12 border-t border-gray-800 pt-12">
-        {footerColumns.map((col, idx) => (
-          <div key={col.heading}>
-            <h3 className="font-bold mb-4 text-lg">{col.heading}</h3>
-            <ul className="space-y-2">
-              {col.links.map(link => (
-                <li key={link.label}>
-                  <a href={link.href} className="hover:underline hover:text-[#A259FF] transition-colors flex items-center">
-                    {link.icon && link.icon}
-                    {link.label}
-                  </a>
-                </li>
-              ))}
+          {/* Right Side - Social Links */}
+          <div className="md:w-1/2 text-left">
+            <h3 className="font-bold mb-6 text-xl">Follow us</h3>
+            <ul className="flex flex-wrap gap-6">
+              {socialLinks.map(link => {
+                const Icon = link.icon;
+                return (
+                  <li key={link.label}>
+                    <a 
+                      href={link.href} 
+                      className="hover:text-[#A259FF] transition-colors flex items-center"
+                      title={link.label}
+                    >
+                      <Icon className="w-6 h-6" />
+                    </a>
+                  </li>
+                );
+              })}
             </ul>
           </div>
-        ))}
+        </div>
       </div>
 
       {/* Bottom Bar */}

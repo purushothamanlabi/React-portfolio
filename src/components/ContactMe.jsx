@@ -63,61 +63,8 @@ const ContactMe = () => {
       <div className="container mx-auto px-2 sm:px-4">
         <h2 className="text-3xl font-bold text-center mb-8 text-white">Contact Me</h2>
         <div className="flex flex-col md:flex-row md:justify-center gap-10 md:gap-16 items-center">
-          <div className="md:w-1/2 w-full mx-auto md:mx-0 mb-8 md:mb-0">
-            {submitSuccess ? (
-              <div className="bg-green-500/20 border border-green-500 text-green-200 p-4 rounded-lg mb-6">
-                Thank you! Your message has been sent successfully.
-              </div>
-            ) : null}
-            
-            <form className="space-y-4 px-1 sm:px-0" onSubmit={handleSubmit}>
-              <div>
-                <label className="block text-gray-300 mb-1 text-sm">Name</label>
-                <input 
-                  type="text"
-                  name="name"
-                  value={formData.name}
-                  onChange={handleChange}
-                  className="w-full px-3 py-2 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 bg-gray-800/50 border border-gray-700 text-white text-sm"
-                />
-                {errors.name && <p className="text-red-400 text-xs mt-1">{errors.name}</p>}
-              </div>
-              
-              <div>
-                <label className="block text-gray-300 mb-1 text-sm">Email</label>
-                <input 
-                  type="email"
-                  name="email"
-                  value={formData.email}
-                  onChange={handleChange}
-                  className="w-full px-3 py-2 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 bg-gray-800/50 border border-gray-700 text-white text-sm"
-                />
-                {errors.email && <p className="text-red-400 text-xs mt-1">{errors.email}</p>}
-              </div>
-              
-              <div>
-                <label className="block text-gray-300 mb-1 text-sm">Message</label>
-                <textarea 
-                  name="message"
-                  value={formData.message}
-                  onChange={handleChange}
-                  className="w-full px-3 py-2 rounded-md h-24 focus:outline-none focus:ring-2 focus:ring-blue-500 bg-gray-800/50 border border-gray-700 text-white text-sm resize-none"
-                ></textarea>
-                {errors.message && <p className="text-red-400 text-xs mt-1">{errors.message}</p>}
-              </div>
-              
-              <button 
-                type="submit"
-                disabled={isSubmitting}
-                className="bg-blue-500 text-white px-6 py-2 rounded-md hover:bg-blue-600 transition-colors duration-200 text-sm font-medium w-full md:w-auto disabled:bg-blue-700 disabled:opacity-70 mt-2"
-              >
-                {isSubmitting ? 'Sending...' : 'Send Message'}
-              </button>
-            </form>
-          </div>
-          
-          <div className="md:w-1/2 w-full flex justify-center items-center">
-            <div className="relative w-40 h-40 sm:w-56 sm:h-56 rounded-full overflow-hidden border-4 border-blue-500/30 mt-4 md:mt-0">
+          <div className="md:w-2/5 w-full flex justify-center items-center">
+            <div className="relative w-48 h-48 sm:w-72 sm:h-72 md:w-80 md:h-80 rounded-full overflow-hidden border-4 border-blue-500/30 mt-4 md:mt-0">
               <video 
                 className="w-full h-full object-cover"
                 autoPlay
@@ -130,6 +77,62 @@ const ContactMe = () => {
                 Your browser does not support the video tag.
               </video>
             </div>
+          </div>
+
+          <div className="md:w-3/5 w-full mx-auto md:mx-0 mb-8 md:mb-0">
+            {submitSuccess ? (
+              <div className="bg-green-500/20 border border-green-500 text-green-200 p-4 rounded-lg mb-6">
+                Thank you! Your message has been sent successfully.
+              </div>
+            ) : null}
+            
+            <form className="space-y-6 px-4 sm:px-6 py-6 bg-neutral-900/50 backdrop-blur-sm rounded-xl border border-neutral-800" onSubmit={handleSubmit}>
+              <div>
+                <label className="block text-gray-300 mb-2 text-sm font-medium">Name</label>
+                <input 
+                  type="text"
+                  name="name"
+                  value={formData.name}
+                  onChange={handleChange}
+                  className="w-full px-4 py-3 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 bg-gray-800/50 border border-gray-700 text-white text-sm"
+                  placeholder="Enter your name"
+                />
+                {errors.name && <p className="text-red-400 text-xs mt-1">{errors.name}</p>}
+              </div>
+              
+              <div>
+                <label className="block text-gray-300 mb-2 text-sm font-medium">Email</label>
+                <input 
+                  type="email"
+                  name="email"
+                  value={formData.email}
+                  onChange={handleChange}
+                  className="w-full px-4 py-3 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 bg-gray-800/50 border border-gray-700 text-white text-sm"
+                  placeholder="Enter your email"
+                />
+                {errors.email && <p className="text-red-400 text-xs mt-1">{errors.email}</p>}
+              </div>
+              
+              <div>
+                <label className="block text-gray-300 mb-2 text-sm font-medium">Message</label>
+                <textarea 
+                  name="message"
+                  value={formData.message}
+                  onChange={handleChange}
+                  className="w-full px-4 py-3 rounded-lg h-32 focus:outline-none focus:ring-2 focus:ring-blue-500 bg-gray-800/50 border border-gray-700 text-white text-sm resize-none"
+                  placeholder="Type your message here..."
+                ></textarea>
+                {errors.message && <p className="text-red-400 text-xs mt-1">{errors.message}</p>}
+              </div>
+              
+              <button 
+                type="submit"
+                disabled={isSubmitting}
+                className="bg-blue-500 text-white px-8 py-3 rounded-lg hover:bg-blue-600 transition-colors duration-200 text-sm font-medium w-full md:w-auto disabled:bg-blue-700 disabled:opacity-70 mt-4"
+              >
+                {isSubmitting ? 'Sending...' : 'Send Message'}
+              </button>
+            </form>
           </div>
         </div>
       </div>
