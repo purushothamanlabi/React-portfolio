@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import emailjs from '@emailjs/browser';
 
 const ContactMe = () => {
   // Add state for form fields and validation
@@ -40,26 +41,57 @@ const ContactMe = () => {
   };
 
   // Handle form submission
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
     
     if (validateForm()) {
       setIsSubmitting(true);
       
-      // Simulate API call
-      setTimeout(() => {
-        setIsSubmitting(false);
+      try {
+        await emailjs.send(
+          'YOUR_SERVICE_ID', // Replace with your EmailJS service ID
+          'YOUR_TEMPLATE_ID', // Replace with your EmailJS template ID
+          {
+            from_name: formData.name,
+            from_email: formData.email,
+            message: formData.message,
+            to_name: 'Your Name', // Replace with your name
+          },
+          'YOUR_PUBLIC_KEY' // Replace with your EmailJS public key
+        );
+
         setSubmitSuccess(true);
         setFormData({ name: '', email: '', message: '' });
         
         // Reset success message after 3 seconds
         setTimeout(() => setSubmitSuccess(false), 3000);
-      }, 1000);
+      } catch (error) {
+        console.error('Error sending email:', error);
+        setErrors({
+          submit: 'Failed to send message. Please try again.'
+        });
+      } finally {
+        setIsSubmitting(false);
+      }
     }
   };
 
   return (
-    <section id="contact" className="py-12">
+    <section id="contact" className="py-12 relative">
+      {/* Arrow Image with Text */}
+      <div className="absolute top-0 left-45 z-10">
+        <p className="text-white text-lg font-medium bg-gradient-to-r from-blue-400 to-purple-500 bg-clip-text font-['Comic_Neue']">
+          Can you stop this time? 😊
+        </p>
+        <div className="w-44 h-44">
+          <img 
+            src="/arrow3.png" 
+            alt="Arrow" 
+            className="w-full h-full object-contain"
+          />
+        </div>
+      </div>
+
       <div className="container mx-auto px-2 sm:px-4">
         <h2 className="text-3xl font-bold text-center mb-8 text-white">Contact Me</h2>
         <div className="flex flex-col md:flex-row md:justify-center gap-10 md:gap-16 items-center">
@@ -85,6 +117,12 @@ const ContactMe = () => {
                 Thank you! Your message has been sent successfully.
               </div>
             ) : null}
+            
+            {errors.submit && (
+              <div className="bg-red-500/20 border border-red-500 text-red-200 p-4 rounded-lg mb-6">
+                {errors.submit}
+              </div>
+            )}
             
             <form className="space-y-6 px-4 sm:px-6 py-6 bg-neutral-900/50 backdrop-blur-sm rounded-xl border border-neutral-800" onSubmit={handleSubmit}>
               <div>

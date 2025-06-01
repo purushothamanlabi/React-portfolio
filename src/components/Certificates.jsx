@@ -1,11 +1,9 @@
-import React, { useState, useEffect, useRef } from 'react';
+import React, { useState, useEffect } from 'react';
 import { ChevronLeft, ChevronRight } from 'lucide-react';
 
 const Certificates = () => {
   const [currentIndex, setCurrentIndex] = useState(0);
   const [isAutoPlaying, setIsAutoPlaying] = useState(true);
-  const carouselRef = useRef(null);
-  const [isTransitioning, setIsTransitioning] = useState(false);
 
   const certificates = [
     {
@@ -46,109 +44,95 @@ const Certificates = () => {
     }
   ];
 
-  // Create an infinite loop by duplicating certificates
-  const infiniteCertificates = [...certificates, ...certificates, ...certificates];
-  const startIndex = certificates.length; // Start from the middle set
-
   useEffect(() => {
     if (!isAutoPlaying) return;
 
     const interval = setInterval(() => {
-      if (!isTransitioning) {
-        handleNext();
-      }
-    }, 2000);
+      handleNext();
+    }, 3000);
 
     return () => clearInterval(interval);
-  }, [isAutoPlaying, isTransitioning]);
-
-  const handleTransitionEnd = () => {
-    setIsTransitioning(false);
-  };
+  }, [isAutoPlaying, currentIndex]);
 
   const handleNext = () => {
-    if (isTransitioning) return;
-    setIsTransitioning(true);
-    
-    const nextIndex = (currentIndex + 1) % certificates.length;
-    setCurrentIndex(nextIndex);
+    setCurrentIndex((prev) => (prev + 1) % certificates.length);
   };
 
   const handlePrevious = () => {
-    if (isTransitioning) return;
-    setIsTransitioning(true);
-    
-    const prevIndex = currentIndex === 0 
-      ? certificates.length - 1 
-      : currentIndex - 1;
-    setCurrentIndex(prevIndex);
+    setCurrentIndex((prev) => (prev - 1 + certificates.length) % certificates.length);
   };
 
   const goToSlide = (index) => {
-    if (isTransitioning || index === currentIndex) return;
-    setIsTransitioning(true);
+    if (index === currentIndex) return;
     setCurrentIndex(index);
   };
 
-  // Calculate the actual translate position
-  const getTranslateX = () => {
-    const actualIndex = startIndex + currentIndex;
-    const cardWidth = 100 / infiniteCertificates.length; // Each card takes this percentage
-    return actualIndex * cardWidth;
+  const getVisibleCards = () => {
+    const cards = [];
+    // For mobile, only show current card
+    if (window.innerWidth < 768) {
+      return [{
+        ...certificates[currentIndex],
+        position: 0,
+        isCenter: true
+      }];
+    }
+    // For desktop, show 3 cards
+    for (let i = 0; i < 3; i++) {
+      const index = (currentIndex - 1 + i + certificates.length) % certificates.length;
+      cards.push({
+        ...certificates[index],
+        position: i,
+        isCenter: i === 1
+      });
+    }
+    return cards;
   };
 
+  const visibleCards = getVisibleCards();
+
   return (
-    <section className="py-20 min-h-screen">
+    <section id="certificates" className="py-20 min-h-screen">
       <div className="container mx-auto px-4">
         <h2 className="text-5xl font-bold text-center text-white mb-16">
           Certifications
         </h2>
         
         <div 
-          className="relative max-w-7xl mx-auto"
+          className="relative max-w-6xl mx-auto"
           onMouseEnter={() => setIsAutoPlaying(false)}
           onMouseLeave={() => setIsAutoPlaying(true)}
         >
           {/* Navigation Arrows */}
           <button
             onClick={handlePrevious}
-            className="absolute top-1/2 -translate-y-1/2 -left-6 z-10 text-white p-3 rounded-full transition-all duration-300 hover:scale-110 bg-white/10 backdrop-blur-sm"
+            className="absolute top-1/2 -translate-y-1/2 -left-4 md:-left-16 z-20 text-white p-2 md:p-3 rounded-full transition-all duration-300 hover:scale-110 bg-white/10 backdrop-blur-sm"
           >
-            <ChevronLeft size={24} />
+            <ChevronLeft size={20} className="md:w-6 md:h-6" />
           </button>
 
           <button
             onClick={handleNext}
-            className="absolute top-1/2 -translate-y-1/2 -right-6 z-10 text-white p-3 rounded-full transition-all duration-300 hover:scale-110 bg-white/10 backdrop-blur-sm"
+            className="absolute top-1/2 -translate-y-1/2 -right-4 md:-right-16 z-20 text-white p-2 md:p-3 rounded-full transition-all duration-300 hover:scale-110 bg-white/10 backdrop-blur-sm"
           >
-            <ChevronRight size={24} />
+            <ChevronRight size={20} className="md:w-6 md:h-6" />
           </button>
 
           {/* Carousel Container */}
-          <div 
-            ref={carouselRef}
-            className="relative h-[500px] overflow-hidden rounded-2xl"
-          >
-            <div 
-              className="flex items-center justify-center gap-6 h-full transition-transform duration-500 ease-in-out"
-              style={{
-                transform: `translateX(-${getTranslateX()}%)`,
-                width: `${infiniteCertificates.length * (100 / 3)}%` // Adjust width to fit all cards
-              }}
-              onTransitionEnd={handleTransitionEnd}
-            >
-              {infiniteCertificates.map((certificate, index) => (
+          <div className="relative h-[500px] overflow-hidden rounded-2xl">
+            <div className="flex items-center justify-center gap-4 md:gap-8 h-full transition-transform duration-500 ease-in-out">
+              {visibleCards.map((certificate, index) => (
                 <div
-                  key={`${certificate.id}-${Math.floor(index / certificates.length)}`}
-                  className={`w-[350px] h-[450px] flex-shrink-0 transition-all duration-500 ${
-                    Math.floor(index / certificates.length) === 1 && (index % certificates.length) === currentIndex
-                      ? 'opacity-100 scale-100 z-10' 
-                      : 'opacity-80 scale-95'
+                  key={`${certificate.id}-${currentIndex}-${index}`}
+                  className={`transition-all duration-500 ${
+                    certificate.isCenter
+                      ? 'w-[300px] md:w-[380px] h-[400px] md:h-[460px] opacity-100 scale-100 z-10' 
+                      : 'w-[280px] md:w-[320px] h-[380px] md:h-[400px] opacity-60 scale-90 z-5'
                   }`}
                 >
                   <CertificateCard 
                     certificate={certificate} 
-                    isActive={Math.floor(index / certificates.length) === 1 && (index % certificates.length) === currentIndex}
+                    isActive={certificate.isCenter}
                   />
                 </div>
               ))}
@@ -156,14 +140,14 @@ const Certificates = () => {
           </div>
 
           {/* Dots Indicator */}
-          <div className="flex justify-center gap-3 mt-8">
+          <div className="flex justify-center gap-2 md:gap-3 mt-8">
             {certificates.map((_, index) => (
               <button
                 key={index}
                 onClick={() => goToSlide(index)}
-                className={`w-3 h-3 rounded-full transition-all duration-300 ${
+                className={`w-2 h-2 md:w-3 md:h-3 rounded-full transition-all duration-300 ${
                   index === currentIndex 
-                    ? 'bg-blue-500 w-8' 
+                    ? 'bg-blue-500 w-6 md:w-8' 
                     : 'bg-gray-600 hover:bg-gray-500'
                 }`}
               />
@@ -184,18 +168,21 @@ const CertificateCard = ({ certificate, isActive }) => {
           src={certificate.image} 
           alt={certificate.title} 
           className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
+          onError={(e) => {
+            e.target.onerror = null;
+            e.target.src = '/images/certificates/default-cert.jpg';
+          }}
         />
+        <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/20 to-transparent"></div>
         
         {/* Credential Badge */}
         <div className="absolute top-3 right-3 bg-white/20 backdrop-blur-sm text-white text-xs px-2 py-1 rounded-full">
           {certificate.credential}
         </div>
-
-      
       </div>
 
       {/* Card Content */}
-      <div className="p-6 bg-gray-800/90 backdrop-blur-sm border border-blue-500/30 rounded-lg h-[250px] flex flex-col">
+      <div className="p-6 bg-gray-800/90 backdrop-blur-sm border border-blue-500/30 rounded-lg h-[260px] flex flex-col">
         <h3 className="text-xl font-bold text-white mb-3 group-hover:text-blue-400 transition-colors duration-300 line-clamp-2">
           {certificate.title}
         </h3>

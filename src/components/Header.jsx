@@ -9,11 +9,31 @@ const Header = () => {
   const menu = [
     { href: '#home', text: 'Home' },
     { href: '#about', text: 'About' },
-    { href: '#education', text: 'Education' },
     { href: '#skills', text: 'Skills' },
-    { href: '#certificates', text: 'Certificates' },
     { href: '#projects', text: 'Projects' },
+    { href: '#experience', text: 'Experience' },
+    { href: '#certificates', text: 'Certificates' },
   ];
+
+  // Handle smooth scrolling for menu items
+  const handleMenuClick = (e, href) => {
+    e.preventDefault();
+    const targetId = href.replace('#', '');
+    const section = document.getElementById(targetId);
+    
+    if (section) {
+      const headerOffset = 80;
+      const elementPosition = section.getBoundingClientRect().top;
+      const offsetPosition = elementPosition + window.pageYOffset - headerOffset;
+
+      window.scrollTo({
+        top: offsetPosition,
+        behavior: 'smooth'
+      });
+      
+      setIsOpen(false);
+    }
+  };
 
   // Mouse tracking for the glow effect
   useEffect(() => {
@@ -73,7 +93,7 @@ const Header = () => {
           
           {/* Logo/Brand */}
           <div className="text-white font-bold text-xl">
-            Portfolio
+            Purushothaman
           </div>
 
           {/* Mobile Menu Button */}
@@ -94,6 +114,7 @@ const Header = () => {
               <li key={item.href}>
                 <a 
                   href={item.href}
+                  onClick={(e) => handleMenuClick(e, item.href)}
                   className="text-gray-300 hover:text-white transition-colors duration-300"
                 >
                   {item.text}
@@ -107,10 +128,7 @@ const Header = () => {
             <button 
               ref={buttonRef}
               className="relative z-10 bg-white text-black px-6 sm:px-8 py-2 rounded-full flex items-center text-sm sm:text-base font-medium overflow-hidden transition-all duration-300 ease-in-out hover:-translate-y-0.5 hover:shadow-lg hover:bg-white hover:text-blue-800 active:translate-y-0.5 active:shadow-md before:absolute before:inset-[-2px] before:rounded-full before:bg-gradient-to-r before:from-[rgba(120,170,255,0.2)] before:via-[rgba(255,255,255,0.3)] before:to-[rgba(120,170,255,0.2)] before:opacity-0 before:transition-opacity before:duration-300 before:z-[-1] hover:before:opacity-100"
-              onClick={() => {
-                const contactSection = document.querySelector('#contact');
-                contactSection.scrollIntoView({ behavior: 'smooth' });
-              }}
+              onClick={(e) => handleMenuClick(e, '#contact')}
             >
               <span className="relative z-10">Contact</span>
               <svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4 ml-2 relative z-10" fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -131,7 +149,11 @@ const Header = () => {
               initial={{ x: "100%" }}
               animate={{ x: 0 }}
               exit={{ x: "100%" }}
-              transition={{ type: "spring", damping: 20, stiffness: 300 }}
+              transition={{ 
+                type: "tween",
+                duration: 0.2,
+                ease: "easeInOut"
+              }}
               className="md:hidden fixed top-0 right-0 h-screen w-[80%] max-w-sm bg-[rgba(17,25,40,0.95)] backdrop-blur-lg shadow-lg"
             >
               <div className="flex flex-col h-full">
@@ -166,8 +188,8 @@ const Header = () => {
                     >
                       <a
                         href={item.href}
+                        onClick={(e) => handleMenuClick(e, item.href)}
                         className="text-gray-300 hover:text-white transition-colors duration-300 block py-4 text-lg"
-                        onClick={() => setIsOpen(false)}
                       >
                         {item.text}
                       </a>
@@ -177,11 +199,7 @@ const Header = () => {
                 <div className="p-6 border-t border-gray-700/40">
                   <button 
                     className="w-full bg-white text-black px-6 py-3 rounded-full flex items-center justify-center text-base font-medium transition-all duration-300 hover:bg-gray-100"
-                    onClick={() => {
-                      setIsOpen(false);
-                      const contactSection = document.querySelector('#contact');
-                      contactSection.scrollIntoView({ behavior: 'smooth' });
-                    }}
+                    onClick={(e) => handleMenuClick(e, '#contact')}
                   >
                     Contact Me
                   </button>
