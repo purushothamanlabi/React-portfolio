@@ -5,8 +5,7 @@ const socialLinks = [
   { label: 'Facebook', href: '#', icon: FaFacebook },
   { label: 'Instagram', href: '#', icon: FaInstagram },
   { label: 'Twitter', href: '#', icon: FaTwitter },
-  { label: 'LinkedIn', href: '#', icon: FaLinkedin },
-  { label: 'Youtube', href: '#', icon: FaYoutube },
+  { label: 'LinkedIn', href: '#', icon: FaLinkedin }
 ];
 
 const Footer = () => {
@@ -33,10 +32,13 @@ const Footer = () => {
                   <li key={link.label}>
                     <a 
                       href={link.href} 
-                      className="hover:text-[#A259FF] transition-colors flex items-center"
+                      className="hover:text-[#A259FF] transition-colors flex items-center gap-3 group"
                       title={link.label}
                     >
                       <Icon className="w-6 h-6" />
+                      <span className="text-gray-300 group-hover:text-[#A259FF] transition-colors">
+                        {link.label}
+                      </span>
                     </a>
                   </li>
                 );

@@ -1,10 +1,14 @@
-import React from 'react';
-import { motion } from 'framer-motion';
+import React, { useState, useEffect, useRef } from 'react';
+import { ChevronLeft, ChevronRight } from 'lucide-react';
 
 const Certificates = () => {
+  const [currentIndex, setCurrentIndex] = useState(0);
+  const [isAutoPlaying, setIsAutoPlaying] = useState(true);
+  const carouselRef = useRef(null);
+  const [isTransitioning, setIsTransitioning] = useState(false);
+
   const certificates = [
     {
-
       id: 1,
       title: "React Web Development",
       issuer: "Udemy",
@@ -39,106 +43,181 @@ const Certificates = () => {
       credential: "MDB-CERT012",
       image: "/mongodb-course.jpg",
       skills: ["MongoDB", "NoSQL", "Aggregation", "Data Modeling"]
-    },
-    {
-      id: 4,
-      title: "MongoDB Database",
-      issuer: "MongoDB Academy",
-      date: "2022",
-      credential: "MDB-CERT012",
-      image: "/mongodb-course.jpg",
-      skills: ["MongoDB", "NoSQL", "Aggregation", "Data Modeling"]
-    },
-    {
-      id: 4,
-      title: "MongoDB Database",
-      issuer: "MongoDB Academy",
-      date: "2022",
-      credential: "MDB-CERT012",
-      image: "/mongodb-course.jpg",
-      skills: ["MongoDB", "NoSQL", "Aggregation", "Data Modeling"]
-    },
+    }
   ];
 
-  const containerVariants = {
-    hidden: {},
-    visible: {
-      transition: {
-        staggerChildren: 0.1
+  // Create an infinite loop by duplicating certificates
+  const infiniteCertificates = [...certificates, ...certificates, ...certificates];
+  const startIndex = certificates.length; // Start from the middle set
+
+  useEffect(() => {
+    if (!isAutoPlaying) return;
+
+    const interval = setInterval(() => {
+      if (!isTransitioning) {
+        handleNext();
       }
-    }
+    }, 2000);
+
+    return () => clearInterval(interval);
+  }, [isAutoPlaying, isTransitioning]);
+
+  const handleTransitionEnd = () => {
+    setIsTransitioning(false);
   };
 
-  const itemVariants = {
-    hidden: { 
-      opacity: 0,
-      y: 20
-    },
-    visible: {
-      opacity: 1,
-      y: 0,
-      transition: {
-        duration: 0.6,
-        ease: "easeOut"
-      }
-    }
+  const handleNext = () => {
+    if (isTransitioning) return;
+    setIsTransitioning(true);
+    
+    const nextIndex = (currentIndex + 1) % certificates.length;
+    setCurrentIndex(nextIndex);
+  };
+
+  const handlePrevious = () => {
+    if (isTransitioning) return;
+    setIsTransitioning(true);
+    
+    const prevIndex = currentIndex === 0 
+      ? certificates.length - 1 
+      : currentIndex - 1;
+    setCurrentIndex(prevIndex);
+  };
+
+  const goToSlide = (index) => {
+    if (isTransitioning || index === currentIndex) return;
+    setIsTransitioning(true);
+    setCurrentIndex(index);
+  };
+
+  // Calculate the actual translate position
+  const getTranslateX = () => {
+    const actualIndex = startIndex + currentIndex;
+    const cardWidth = 100 / infiniteCertificates.length; // Each card takes this percentage
+    return actualIndex * cardWidth;
   };
 
   return (
-    <section id="certificates" className="py-20 bg-[#0f0f14]">
+    <section className="py-20 min-h-screen">
       <div className="container mx-auto px-4">
-        <h2 className="text-4xl font-bold text-center text-white mb-12">
+        <h2 className="text-5xl font-bold text-center text-white mb-16">
           Certifications
         </h2>
         
-        <motion.div
-          variants={containerVariants}
-          initial="hidden"
-          whileInView="visible"
-          viewport={{ once: true }}
-          className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-7xl mx-auto"
+        <div 
+          className="relative max-w-7xl mx-auto"
+          onMouseEnter={() => setIsAutoPlaying(false)}
+          onMouseLeave={() => setIsAutoPlaying(true)}
         >
-          {certificates.map((cert) => (
-            <motion.div
-              key={cert.id}
-              variants={itemVariants}
-              whileHover={{ scale: 1.02 }}
-              className="bg-gray-800/30 rounded-xl overflow-hidden shadow-xl border border-gray-700/50 backdrop-blur-sm"
+          {/* Navigation Arrows */}
+          <button
+            onClick={handlePrevious}
+            className="absolute top-1/2 -translate-y-1/2 -left-6 z-10 text-white p-3 rounded-full transition-all duration-300 hover:scale-110 bg-white/10 backdrop-blur-sm"
+          >
+            <ChevronLeft size={24} />
+          </button>
+
+          <button
+            onClick={handleNext}
+            className="absolute top-1/2 -translate-y-1/2 -right-6 z-10 text-white p-3 rounded-full transition-all duration-300 hover:scale-110 bg-white/10 backdrop-blur-sm"
+          >
+            <ChevronRight size={24} />
+          </button>
+
+          {/* Carousel Container */}
+          <div 
+            ref={carouselRef}
+            className="relative h-[500px] overflow-hidden rounded-2xl"
+          >
+            <div 
+              className="flex items-center justify-center gap-6 h-full transition-transform duration-500 ease-in-out"
+              style={{
+                transform: `translateX(-${getTranslateX()}%)`,
+                width: `${infiniteCertificates.length * (100 / 3)}%` // Adjust width to fit all cards
+              }}
+              onTransitionEnd={handleTransitionEnd}
             >
-              <div className="relative h-48 overflow-hidden">
-                <img 
-                  src={cert.image} 
-                  alt={cert.title} 
-                  className="w-full h-full object-cover"
-                />
-                <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent"></div>
-              </div>
-              
-              <div className="p-6">
-                <h3 className="text-xl font-bold text-white mb-2">{cert.title}</h3>
-                <div className="flex justify-between items-center mb-4">
-                  <span className="text-blue-400">{cert.issuer}</span>
-                  <span className="text-gray-500 text-sm">{cert.date}</span>
+              {infiniteCertificates.map((certificate, index) => (
+                <div
+                  key={`${certificate.id}-${Math.floor(index / certificates.length)}`}
+                  className={`w-[350px] h-[450px] flex-shrink-0 transition-all duration-500 ${
+                    Math.floor(index / certificates.length) === 1 && (index % certificates.length) === currentIndex
+                      ? 'opacity-100 scale-100 z-10' 
+                      : 'opacity-80 scale-95'
+                  }`}
+                >
+                  <CertificateCard 
+                    certificate={certificate} 
+                    isActive={Math.floor(index / certificates.length) === 1 && (index % certificates.length) === currentIndex}
+                  />
                 </div>
-                <div className="mb-4">
-                  <p className="text-gray-500 text-sm">Credential ID: {cert.credential}</p>
-                </div>
-                <div className="flex flex-wrap gap-2">
-                  {cert.skills.map((skill, index) => (
-                    <span
-                      key={index}
-                      className="text-xs bg-blue-900/30 text-blue-400 px-2 py-1 rounded-full"
-                    >
-                      {skill}
-                    </span>
-                  ))}
-                </div>
-              </div>
-            </motion.div>
-          ))}
-        </motion.div>
+              ))}
+            </div>
+          </div>
+
+          {/* Dots Indicator */}
+          <div className="flex justify-center gap-3 mt-8">
+            {certificates.map((_, index) => (
+              <button
+                key={index}
+                onClick={() => goToSlide(index)}
+                className={`w-3 h-3 rounded-full transition-all duration-300 ${
+                  index === currentIndex 
+                    ? 'bg-blue-500 w-8' 
+                    : 'bg-gray-600 hover:bg-gray-500'
+                }`}
+              />
+            ))}
+          </div>
+        </div>
       </div>
     </section>
+  );
+};
+
+const CertificateCard = ({ certificate, isActive }) => {
+  return (
+    <div className={`group relative h-full rounded-2xl overflow-hidden transition-all duration-500 ${isActive ? '' : ''}`}>
+      {/* Certificate Image */}
+      <div className="relative h-[200px] overflow-hidden">
+        <img 
+          src={certificate.image} 
+          alt={certificate.title} 
+          className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
+        />
+        
+        {/* Credential Badge */}
+        <div className="absolute top-3 right-3 bg-white/20 backdrop-blur-sm text-white text-xs px-2 py-1 rounded-full">
+          {certificate.credential}
+        </div>
+
+      
+      </div>
+
+      {/* Card Content */}
+      <div className="p-6 bg-gray-800/90 backdrop-blur-sm border border-blue-500/30 rounded-lg h-[250px] flex flex-col">
+        <h3 className="text-xl font-bold text-white mb-3 group-hover:text-blue-400 transition-colors duration-300 line-clamp-2">
+          {certificate.title}
+        </h3>
+        
+        <div className="flex justify-between items-center mb-4">
+          <span className="text-blue-400 font-medium">{certificate.issuer}</span>
+          <span className="text-gray-400 text-sm">{certificate.date}</span>
+        </div>
+        
+        {/* Skills Tags */}
+        <div className="flex flex-wrap gap-2 mt-auto">
+          {certificate.skills.map((skill, index) => (
+            <span
+              key={index}
+              className="text-xs text-blue-300 px-3 py-1 rounded-full border border-blue-700/30 hover:bg-blue-800/40 transition-colors duration-300"
+            >
+              {skill}
+            </span>
+          ))}
+        </div>
+      </div>
+    </div>
   );
 };
 

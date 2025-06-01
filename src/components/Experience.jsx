@@ -27,9 +27,25 @@ const Experience = () => {
           Work Experience
         </h2>
 
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
-          {/* Left Side - Introduction */}
-          <div className="space-y-6">
+        <div className="flex flex-col lg:flex-row gap-12">
+          {/* Introduction - Now first on mobile */}
+          <div className="w-full lg:w-1/2 space-y-6 order-1 lg:order-2">
+            <h3 className="text-2xl font-bold text-white mb-4">
+              My Journey in Tech
+            </h3>
+            <p className="text-gray-400 leading-relaxed">
+              With over 3 years of experience in web development, I've had the opportunity to work on diverse projects and technologies. My journey has been marked by continuous learning and growth, from building responsive user interfaces to architecting full-stack applications. Throughout my career, I've contributed to projects handling millions of users and implemented complex features like real-time data synchronization and advanced analytics.
+            </p>
+            <p className="text-gray-400 leading-relaxed">
+              focusing on creating scalable, maintainable, and user-friendly applications. My experience spans across startups and enterprise environments, giving me a well-rounded perspective on software development. I've led development teams, mentored junior developers, and actively participated in code reviews and architectural decisions.
+            </p>
+            <p className="text-gray-400 leading-relaxed">
+              Beyond technical skills, I've developed strong project management abilities, working with cross-functional teams and stakeholders to deliver projects on time and within budget. I'm passionate about staying current with industry trends and regularly contribute to open-source projects and technical communities.
+            </p>
+          </div>
+
+          {/* Experience Cards - Now second on mobile */}
+          <div className="w-full lg:w-1/2 space-y-6 order-2 lg:order-1">
             {experiences.map((exp) => (
               <div 
                 key={exp.id}
@@ -60,24 +76,6 @@ const Experience = () => {
               </div>
             ))}
           </div>
-          
-
-          {/* Right Side - Experience Cards */}
-          <div className="space-y-6">
-            <h3 className="text-2xl font-bold text-white mb-4">
-              My Journey in Tech
-            </h3>
-            <p className="text-gray-400 leading-relaxed">
-              With over 3 years of experience in web development, I've had the opportunity to work on diverse projects and technologies. My journey has been marked by continuous learning and growth, from building responsive user interfaces to architecting full-stack applications. Throughout my career, I've contributed to projects handling millions of users and implemented complex features like real-time data synchronization and advanced analytics.
-            </p>
-            <p className="text-gray-400 leading-relaxed">
-             focusing on creating scalable, maintainable, and user-friendly applications. My experience spans across startups and enterprise environments, giving me a well-rounded perspective on software development. I've led development teams, mentored junior developers, and actively participated in code reviews and architectural decisions.
-            </p>
-            <p className="text-gray-400 leading-relaxed">
-              Beyond technical skills, I've developed strong project management abilities, working with cross-functional teams and stakeholders to deliver projects on time and within budget. I'm passionate about staying current with industry trends and regularly contribute to open-source projects and technical communities.
-            </p>
-          </div>
-          
         </div>
       </div>
     </section>

@@ -31,6 +31,77 @@ const FloatingElement = ({ children, delay = 0, className = "" }) => {
   );
 };
 
+const ScrollArrow = () => {
+  const [isHovered, setIsHovered] = useState(false);
+
+  return (
+    <motion.div
+      initial={{ opacity: 0, y: -10 }}
+      animate={{ 
+        opacity: 1,
+        y: [0, 10, 0],
+      }}
+      transition={{
+        opacity: { duration: 0.5 },
+        y: {
+          repeat: Infinity,
+          duration: 1.5,
+          ease: "easeInOut",
+        }
+      }}
+      className="absolute bottom-8 left-1/2 -translate-x-1/2 cursor-pointer"
+      onClick={() => window.scrollTo({ top: window.innerHeight, behavior: 'smooth' })}
+      onMouseEnter={() => setIsHovered(true)}
+      onMouseLeave={() => setIsHovered(false)}
+    >
+      <motion.div 
+        className="flex flex-col items-center"
+        animate={{
+          scale: isHovered ? 1.1 : 1,
+          color: isHovered ? "#60A5FA" : "#9CA3AF"
+        }}
+        transition={{
+          type: "spring",
+          stiffness: 400,
+          damping: 10
+        }}
+      >
+        <motion.span 
+          className="text-sm mb-2"
+          animate={{
+            y: isHovered ? -2 : 0
+          }}
+        >
+          Scroll Down
+        </motion.span>
+        <motion.svg 
+          className="w-6 h-6"
+          fill="none" 
+          stroke="currentColor" 
+          viewBox="0 0 24 24"
+          animate={{
+            y: isHovered ? 2 : 0
+          }}
+        >
+          <motion.path 
+            strokeLinecap="round" 
+            strokeLinejoin="round" 
+            strokeWidth={2} 
+            d="M19 14l-7 7m0 0l-7-7m7 7V3"
+            animate={{
+              pathLength: isHovered ? 1 : 0.8,
+              opacity: isHovered ? 1 : 0.8
+            }}
+            transition={{
+              duration: 0.3
+            }}
+          />
+        </motion.svg>
+      </motion.div>
+    </motion.div>
+  );
+};
+
 const LandingPage = () => {
   const [isHovered, setIsHovered] = useState(false);
 
@@ -91,7 +162,12 @@ const LandingPage = () => {
             glowColor="rgba(0, 255, 255, 0.6)"
             animationDuration={0.5}
             pauseBetweenAnimations={1}
-            className="text-2xl sm:text-4xl"
+            className="font-black"
+            style={{
+              '--border-color': '#00ffff',
+              '--glow-color': 'rgba(0, 255, 255, 0.6)',
+              display: 'inline-block'
+            }}
           />
         </motion.div>
 
@@ -136,6 +212,9 @@ const LandingPage = () => {
           </motion.div>
         </div>
       </div>
+
+      {/* Scroll Arrow */}
+      <ScrollArrow />
     </section>
   );
 };
