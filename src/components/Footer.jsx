@@ -29,13 +29,15 @@ const Footer = () => {
               {socialLinks.map(link => {
                 const Icon = link.icon;
                 return (
-                  <li key={link.label}>
+                  <li key={link.label} className="w-[120px]">
                     <a 
                       href={link.href} 
                       className="hover:text-[#A259FF] transition-colors flex items-center gap-3 group"
                       title={link.label}
                     >
-                      <Icon className="w-6 h-6" />
+                      <div className="w-6 h-6 flex items-center justify-center">
+                        <Icon className="w-5 h-5" />
+                      </div>
                       <span className="text-gray-300 group-hover:text-[#A259FF] transition-colors">
                         {link.label}
                       </span>

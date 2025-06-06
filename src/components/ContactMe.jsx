@@ -79,7 +79,7 @@ const ContactMe = () => {
   return (
     <section id="contact" className="py-12 relative">
       {/* Arrow Image with Text */}
-      <div className="absolute top-0 left-45 z-10">
+      <div className="absolute top-0 left-45 z-10 hidden md:block">
         <p className="text-white text-lg font-medium bg-gradient-to-r from-blue-400 to-purple-500 bg-clip-text font-['Comic_Neue']">
           Can you stop this time? 😊
         </p>

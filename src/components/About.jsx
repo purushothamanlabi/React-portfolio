@@ -140,7 +140,7 @@ const About = () => {
           >
             <div className="w-full max-w-[95vw] sm:max-w-sm md:max-w-md lg:max-w-lg xl:max-w-xl mx-auto aspect-[5/6] sm:aspect-[1/1] rounded-lg overflow-hidden p-2 bg-[#111] shadow-lg hover:shadow-2xl transition-shadow duration-300">
               <img
-                src="/image.png"
+                src="/3426526.jpg"
                 alt="Profile"
                 className="w-full h-full object-cover rounded-lg"
               />

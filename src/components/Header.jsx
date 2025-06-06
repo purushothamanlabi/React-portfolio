@@ -92,7 +92,7 @@ const Header = () => {
              }}>
           
           {/* Logo/Brand */}
-          <div className="text-white font-bold text-xl">
+          <div className="text-white font-bold text-xl font-['Poppins'] tracking-wide">
             Purushothaman
           </div>
 

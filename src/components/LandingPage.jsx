@@ -136,7 +136,7 @@ const LandingPage = () => {
 
       <FloatingElement 
         delay={1} 
-        className="absolute bottom-[28%] right-[8%] z-10 sm:bottom-[30%] sm:right-[15%]"
+        className="absolute bottom-[23%] right-[8%] z-10 sm:bottom-[30%] sm:right-[15%]"
       >
         <div className="bg-orange-500/90 backdrop-blur-sm rounded-lg px-3 py-1 text-white sm:px-4 sm:py-2">
           <span className="text-xs sm:text-sm font-medium">MySql</span>
@@ -165,17 +165,18 @@ const LandingPage = () => {
 
         {/* Social Media Icons */}
         <div className="flex justify-center gap-6 mb-4">
-          {/* GitHub */}
-          <a href="https://github.com/your-username" target="_blank" rel="noopener noreferrer" aria-label="GitHub" className="transition-transform duration-200 hover:scale-110">
-            <img src="/social/icons8-github-64.png" alt="GitHub" className="w-7 h-7 object-contain" />
-          </a>
+          
           {/* Instagram */}
           <a href="https://instagram.com/your-username" target="_blank" rel="noopener noreferrer" aria-label="Instagram" className="transition-transform duration-200 hover:scale-110">
-            <img src="/social/icons8-instagram-96.png" alt="Instagram" className="w-7 h-7 object-contain" />
+            <img src="/social/icons8-instagram-96.png" alt="Instagram" className="w-10 h-10 object-contain" />
+          </a>
+          {/* GitHub */}
+          <a href="https://github.com/your-username" target="_blank" rel="noopener noreferrer" aria-label="GitHub" className="transition-transform duration-200 hover:scale-110">
+            <img src="/social/icons8-github-90.png" alt="GitHub" className="w-10 h-10 object-contain invert" />
           </a>
           {/* LinkedIn */}
           <a href="https://linkedin.com/in/your-username" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn" className="transition-transform duration-200 hover:scale-110">
-            <img src="/social/icons8-linkedin-96.png" alt="LinkedIn" className="w-7 h-7 object-contain" />
+            <img src="/social/icons8-linkedin-96.png" alt="LinkedIn" className="w-10 h-10 object-contain" />
           </a>
         </div>
 
@@ -196,12 +197,12 @@ const LandingPage = () => {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.4, ease: "easeOut" }}
-            className="flex flex-col sm:flex-row justify-center gap-4 sm:gap-4 relative z-10"
+            className="flex flex-row justify-between gap-3 sm:gap-4 w-full max-w-xs mx-auto sm:max-w-none sm:flex-row sm:justify-center relative z-10"
           >
-            <button className="bg-blue-600 hover:bg-blue-700 text-white px-6 py-3 sm:px-8 rounded-full font-medium transition-colors mb-2 sm:mb-0">
+            <button className="bg-blue-600 hover:bg-blue-700 text-white px-4 py-2 sm:px-8 sm:py-3 rounded-full font-medium transition-colors w-1/2 sm:w-auto">
               Hire me
             </button>
-            <button className="bg-gray-800/50 backdrop-blur-sm hover:bg-gray-700 text-white px-6 py-3 sm:px-8 rounded-full font-medium transition-colors">
+            <button className="bg-gray-800/50 backdrop-blur-sm hover:bg-gray-700 text-white px-4 py-2 sm:px-8 sm:py-3 rounded-full font-medium transition-colors w-1/2 sm:w-auto">
               Contact Me
             </button>
           </motion.div>
