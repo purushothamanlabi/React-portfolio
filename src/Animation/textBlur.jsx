@@ -9,7 +9,6 @@ const TrueFocus = ({
   glowColor = "rgba(0, 255, 0, 0.6)",
   animationDuration = 0.5,
   pauseBetweenAnimations = 1,
-  className = "",
   style = {}
 }) => {
   const words = sentence.split(" ");
@@ -24,7 +23,7 @@ const TrueFocus = ({
     firstWord: 'text-base',
     otherWords: 'text-5xl',
     container: 'text-base',
-    border: 'w-4 h-4'
+    border: 'w-3 h-3 md:w-4 md:h-4 lg:w-6 lg:h-6'
   };
 
   useEffect(() => {
@@ -72,7 +71,7 @@ const TrueFocus = ({
     >
       {words.map((word, index) => {
         const isActive = index === currentIndex;
-        const wordSizeClass = index === 0 ? 'text-[1rem]' : 'text-[3rem]';
+        const wordSizeClass = 'text-[1.5rem] md:text-[2rem] lg:text-[3rem]';
         return (
           <span
             key={index}

@@ -18,6 +18,11 @@ const Skills = () => {
       icon: <img width="48" height="48" src="https://img.icons8.com/color/48/tailwindcss.png" alt="tailwindcss"/>,
     },
     {
+      title: 'Authorization',
+      description: 'Authorization for protected user informations',
+      icon: <img width="48" height="48" src="https://img.icons8.com/color/48/java-web-token.png" alt="java-web-token"/>,
+    },
+    {
       title: 'Node.js',
       description: 'Server-side JavaScript runtime for scalable applications',
       icon: <img width="48" height="48" src="https://img.icons8.com/fluency/48/node-js.png" alt="node-js"/>,
@@ -37,11 +42,7 @@ const Skills = () => {
       description: 'NoSQL document database for modern applications',
       icon: <img width="48" height="48" src="https://img.icons8.com/external-tal-revivo-shadow-tal-revivo/48/external-mongodb-a-cross-platform-document-oriented-database-program-logo-shadow-tal-revivo.png" alt="mongodb"/>,
     },
-    {
-      title: 'Authorization',
-      description: 'Authorization for protected user informations',
-      icon: <img width="48" height="48" src="https://img.icons8.com/color/48/java-web-token.png" alt="java-web-token"/>,
-    },
+   
   ];
 
   return (

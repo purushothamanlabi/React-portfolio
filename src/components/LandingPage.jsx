@@ -101,7 +101,6 @@ const ScrollArrow = () => {
 };
 
 const LandingPage = () => {
-  const [isHovered, setIsHovered] = useState(false);
 
   return (
     <section 
@@ -145,7 +144,7 @@ const LandingPage = () => {
       </FloatingElement>
 
       {/* Main Content */}
-      <div className="text-center max-w-4xl mx-auto px-2 sm:px-4 relative z-10">
+      <div className="text-center max-w-4xl mx-auto px-2 sm:px-4 relative z-10 select-none">
         <motion.div 
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
@@ -153,7 +152,7 @@ const LandingPage = () => {
           className="mb-4 sm:mb-6 text-white"
         >
           <TrueFocus
-            sentence="Full Stack Web Developer"
+            sentence="Full Stack web Developer"
             manualMode={true}
             blurAmount={8}
             borderColor="#00ffff"
@@ -161,13 +160,24 @@ const LandingPage = () => {
             animationDuration={0.5}
             pauseBetweenAnimations={1}
             className="font-black"
-            style={{
-              '--border-color': '#00ffff',
-              '--glow-color': 'rgba(0, 255, 255, 0.6)',
-              display: 'inline-block'
-            }}
           />
         </motion.div>
+
+        {/* Social Media Icons */}
+        <div className="flex justify-center gap-6 mb-4">
+          {/* GitHub */}
+          <a href="https://github.com/your-username" target="_blank" rel="noopener noreferrer" aria-label="GitHub" className="transition-transform duration-200 hover:scale-110">
+            <img src="/social/icons8-github-64.png" alt="GitHub" className="w-7 h-7 object-contain" />
+          </a>
+          {/* Instagram */}
+          <a href="https://instagram.com/your-username" target="_blank" rel="noopener noreferrer" aria-label="Instagram" className="transition-transform duration-200 hover:scale-110">
+            <img src="/social/icons8-instagram-96.png" alt="Instagram" className="w-7 h-7 object-contain" />
+          </a>
+          {/* LinkedIn */}
+          <a href="https://linkedin.com/in/your-username" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn" className="transition-transform duration-200 hover:scale-110">
+            <img src="/social/icons8-linkedin-96.png" alt="LinkedIn" className="w-7 h-7 object-contain" />
+          </a>
+        </div>
 
         <motion.div 
           initial={{ opacity: 0, y: 20 }}
@@ -181,19 +191,6 @@ const LandingPage = () => {
         </motion.div>
 
         <div className="relative">
-          {/* Circle positioned behind buttons */}
-          {/* <div 
-            className="absolute left-1/2 top-1/2 w-[400px] h-[400px] -translate-x-1/2 -translate-y-1/2 -z-10"
-            onMouseEnter={() => setIsHovered(true)}
-            onMouseLeave={() => setIsHovered(false)}
-          >
-            <Circle 
-              hue={120} 
-              hoverIntensity={0.3} 
-              rotateOnHover={true}
-              forceHoverState={isHovered}
-            />
-          </div> */}
 
           <motion.div
             initial={{ opacity: 0, y: 20 }}
@@ -202,7 +199,7 @@ const LandingPage = () => {
             className="flex flex-col sm:flex-row justify-center gap-4 sm:gap-4 relative z-10"
           >
             <button className="bg-blue-600 hover:bg-blue-700 text-white px-6 py-3 sm:px-8 rounded-full font-medium transition-colors mb-2 sm:mb-0">
-              Download CV
+              Hire me
             </button>
             <button className="bg-gray-800/50 backdrop-blur-sm hover:bg-gray-700 text-white px-6 py-3 sm:px-8 rounded-full font-medium transition-colors">
               Contact Me

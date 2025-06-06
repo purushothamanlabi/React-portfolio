@@ -154,10 +154,10 @@ const Header = () => {
                 duration: 0.2,
                 ease: "easeInOut"
               }}
-              className="md:hidden fixed top-0 right-0 h-screen w-[80%] max-w-sm bg-[rgba(17,25,40,0.95)] backdrop-blur-lg shadow-lg"
+              className="md:hidden fixed top-0 bottom-0 right-0 max-h-screen w-[80%] max-w-sm bg-[rgba(17,25,40,0.95)] backdrop-blur-lg shadow-lg flex flex-col"
             >
               <div className="flex flex-col h-full">
-                <div className="p-6 border-b border-gray-700/40 flex justify-between items-center">
+                <div className="p-6 border-b border-gray-700/40 flex-shrink-0 flex justify-between items-center">
                   <h2 className="text-white text-xl font-bold">Menu</h2>
                   <button 
                     onClick={() => setIsOpen(false)}
@@ -196,7 +196,7 @@ const Header = () => {
                     </motion.li>
                   ))}
                 </ul>
-                <div className="p-6 border-t border-gray-700/40">
+                <div className="p-6 border-t border-gray-700/40 flex-shrink-0">
                   <button 
                     className="w-full bg-white text-black px-6 py-3 rounded-full flex items-center justify-center text-base font-medium transition-all duration-300 hover:bg-gray-100"
                     onClick={(e) => handleMenuClick(e, '#contact')}

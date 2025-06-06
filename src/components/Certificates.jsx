@@ -173,7 +173,7 @@ const CertificateCard = ({ certificate, isActive }) => {
             e.target.src = '/images/certificates/default-cert.jpg';
           }}
         />
-        <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/20 to-transparent"></div>
+        <div className="absolute inset-0 "></div>
         
         {/* Credential Badge */}
         <div className="absolute top-3 right-3 bg-white/20 backdrop-blur-sm text-white text-xs px-2 py-1 rounded-full">
@@ -182,7 +182,7 @@ const CertificateCard = ({ certificate, isActive }) => {
       </div>
 
       {/* Card Content */}
-      <div className="p-6 bg-gray-800/90 backdrop-blur-sm border border-blue-500/30 rounded-lg h-[260px] flex flex-col">
+      <div className="p-6 bg-gray-800/90 backdrop-blur-sm border border-blue-500/30 rounded-b-lg h-[260px] flex flex-col">
         <h3 className="text-xl font-bold text-white mb-3 group-hover:text-blue-400 transition-colors duration-300 line-clamp-2">
           {certificate.title}
         </h3>
@@ -193,7 +193,7 @@ const CertificateCard = ({ certificate, isActive }) => {
         </div>
         
         {/* Skills Tags */}
-        <div className="flex flex-wrap gap-2 mt-auto">
+        <div className="flex flex-wrap gap-2 mt-1">
           {certificate.skills.map((skill, index) => (
             <span
               key={index}
