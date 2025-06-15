@@ -31,18 +31,20 @@ const About = () => {
             variants={textVariants}
             className="space-y-4 p-4 bg-[#1b2738]/10 rounded-xl"
           >
-            <p className="text-base text-gray-300 leading-relaxed">
-              I pursued Bachelor of Computer Applications at Dhanalakshmi Srinivasan Arts and Science College, Mahabalipuram, from 2021 to 2024, achieving a grade of 62%. In 12th standard at Govt Boys Higher Secondary School, Tirukazhukundram, I secured 71% in 2019-2021.
-            </p>
-            <div className="space-y-2">
-              <h3 className="text-xl font-semibold text-white">Certificates</h3>
-              <p className="text-base text-gray-300 leading-relaxed">
-                I hold a Front-End Web Developer certification with React from Udemy, a JavaScript certificate from Infosys Springboard, and Node.js and Express framework certifications from Simplilearn. Additionally, I completed the 'Introduction to MongoDB Database' course from MongoDB Academy.
-              </p>
-              <p className="text-base text-gray-300 leading-relaxed">
-              I hold a Front-End Web Developer certification with React from Udemy, a JavaScript certificate from Infosys Springboard, and Node.js and Express framework certifications from Simplilearn. Additionally, I completed the 'Introduction to MongoDB Database' course from MongoDB Academy.
-              </p>
-            </div>
+           <div className="space-y-2">
+          <p className="text-base text-gray-300 mb-2 mt-10 leading-relaxed">
+            As a Computer Science student, I’ve always been deeply interested in <span className="text-cyan-400 font-semibold">technology</span> and <span className="text-cyan-400 font-semibold">cybersecurity</span>. My academic journey helped me explore the fundamentals while growing a strong curiosity for how digital systems work and stay secure.
+          </p>
+          
+          <p className="text-base text-gray-300 mb-2 mt-10 leading-relaxed">
+            I'm a <span className="text-cyan-400 font-semibold">self-learner</span> who enjoys exploring new tools, frameworks, and development practices. I’ve enhanced my skills through various online platforms, always seeking to stay up to date with industry trends and best practices.
+          </p>
+          
+          <p className="text-base text-gray-300 mb-2 mt-10 leading-relaxed">
+            I'm eager to apply my knowledge by working on <span className="text-cyan-400 font-semibold">real-time applications</span>, contributing to meaningful projects, and continuously growing as a developer in practical, hands-on environments.
+          </p>
+        </div>
+
           </motion.div>
         );
       case 'education':
@@ -56,22 +58,22 @@ const About = () => {
           >
             <div className="space-y-8">
               <div className="border-l-2 border-blue-500 pl-4 py-1">
-                <h3 className="text-xl font-semibold text-white mb-2">Bachelor of Computer Applications</h3>
+                <h3 className="text-xl font-semibold text-white mb-2">Bachelor of Computer Applications - BCA</h3>
                 <p className="text-blue-400 text-base mb-1">2021 - 2024</p>
                 <p className="text-gray-300 text-base mb-1">Dhanalakshmi Srinivasan Arts and Science College, Mahabalipuram</p>
-                <p className="text-gray-400 text-base">Grade: 62%</p>
+                <p className="text-gray-400 text-base">CGPA: 6.2</p>
               </div>
               <div className="border-l-2 border-blue-500 pl-4 py-1">
-                <h3 className="text-xl font-semibold text-white mb-2">Higher Secondary Education</h3>
+                <h3 className="text-xl font-semibold text-white mb-2">Higher Secondary Education - HSC</h3>
                 <p className="text-blue-400 text-base mb-1">2019 - 2021</p>
                 <p className="text-gray-300 text-base mb-1">Govt Boys Higher Secondary School, Tirukazhukundram</p>
-                <p className="text-gray-400 text-base">Grade: 71%</p>
+                <p className="text-gray-400 text-base">Percentage: 71%</p>
               </div>
               <div className="border-l-2 border-blue-500 pl-4 py-1">
-                <h3 className="text-xl font-semibold text-white mb-2">Secondary School Education</h3>
+                <h3 className="text-xl font-semibold text-white mb-2">High school Education - SSLC</h3>
                 <p className="text-blue-400 text-base mb-1">2018 - 2019</p>
-                <p className="text-gray-300 text-base mb-1">Govt Boys Higher Secondary School, Tirukazhukundram</p>
-                <p className="text-gray-400 text-base">Grade: 85%</p>
+                <p className="text-gray-300 text-base mb-1">Govt High school, Oragadam</p>
+                <p className="text-gray-400 text-base">Percentage: 85%</p>
               </div>
             </div>
           </motion.div>
@@ -85,30 +87,30 @@ const About = () => {
             variants={textVariants}
             className="space-y-4 p-4 bg-[#1b2738]/10 rounded-xl"
           >
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+            <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
               <div className="bg-[#1b2738]/20 p-4 rounded-lg border border-blue-500/30 hover:border-blue-500/50 transition-colors duration-300">
-                <h3 className="text-lg font-semibold text-white mb-2">Web Development</h3>
-                <p className="text-gray-300 text-base">Passionate about creating responsive and user-friendly web applications</p>
+                <h3 className="text-lg font-semibold text-white mb-2">Software Development</h3>
+                <p className="text-gray-300 text-base">Passionate about building scalable and efficient software solutions</p>
+              </div>
+              <div className="bg-[#1b2738]/20 p-4 rounded-lg border border-blue-500/30 hover:border-blue-500/50 transition-colors duration-300">
+                <h3 className="text-lg font-semibold text-white mb-2">Cybersecurity</h3>
+                <p className="text-gray-300 text-base">Interested in securing applications and implementing robust security measures</p>
               </div>
               <div className="bg-[#1b2738]/20 p-4 rounded-lg border border-blue-500/30 hover:border-blue-500/50 transition-colors duration-300">
                 <h3 className="text-lg font-semibold text-white mb-2">UI/UX Design</h3>
-                <p className="text-gray-300 text-base">Interested in designing intuitive and engaging user interfaces</p>
+                <p className="text-gray-300 text-base">Creating intuitive and engaging user experiences through thoughtful design</p>
               </div>
               <div className="bg-[#1b2738]/20 p-4 rounded-lg border border-blue-500/30 hover:border-blue-500/50 transition-colors duration-300">
-                <h3 className="text-lg font-semibold text-white mb-2">Problem Solving</h3>
-                <p className="text-gray-300 text-base">Enjoy tackling complex programming challenges and finding efficient solutions</p>
+                <h3 className="text-lg font-semibold text-white mb-2">DevOps</h3>
+                <p className="text-gray-300 text-base">Streamlining development workflows and implementing CI/CD pipelines</p>
               </div>
               <div className="bg-[#1b2738]/20 p-4 rounded-lg border border-blue-500/30 hover:border-blue-500/50 transition-colors duration-300">
-                <h3 className="text-lg font-semibold text-white mb-2">Learning</h3>
-                <p className="text-gray-300 text-base">Always eager to learn new technologies and improve my skills</p>
+                <h3 className="text-lg font-semibold text-white mb-2">Automation</h3>
+                <p className="text-gray-300 text-base">Developing automated solutions to improve efficiency and reduce manual tasks</p>
               </div>
               <div className="bg-[#1b2738]/20 p-4 rounded-lg border border-blue-500/30 hover:border-blue-500/50 transition-colors duration-300">
-                <h3 className="text-lg font-semibold text-white mb-2">Open Source</h3>
-                <p className="text-gray-300 text-base">Contributing to open source projects and building a strong developer community</p>
-              </div>
-              <div className="bg-[#1b2738]/20 p-4 rounded-lg border border-blue-500/30 hover:border-blue-500/50 transition-colors duration-300">
-                <h3 className="text-lg font-semibold text-white mb-2">Tech Writing</h3>
-                <p className="text-gray-300 text-base">Sharing knowledge through technical articles and documentation</p>
+                <h3 className="text-lg font-semibold text-white mb-2">Agentic Development</h3>
+                <p className="text-gray-300 text-base">Building intelligent agents and autonomous systems for enhanced functionality</p>
               </div>
             </div>
           </motion.div>

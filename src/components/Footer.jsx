@@ -1,11 +1,11 @@
 import React from 'react';
-import { FaFacebook, FaInstagram, FaTwitter, FaLinkedin, FaYoutube } from 'react-icons/fa';
+import { FaFacebook, FaInstagram, FaTwitter, FaLinkedin } from 'react-icons/fa';
 
 const socialLinks = [
-  { label: 'Facebook', href: '#', icon: FaFacebook },
-  { label: 'Instagram', href: '#', icon: FaInstagram },
-  { label: 'Twitter', href: '#', icon: FaTwitter },
-  { label: 'LinkedIn', href: '#', icon: FaLinkedin }
+  { label: 'LinkedIn', href: 'https://www.linkedin.com/in/purushothaman-d-32b786250', icon: FaLinkedin },
+  { label: 'Facebook', href: 'https://www.facebook.com/profile.php?id=100069839256472', icon: FaFacebook },
+  { label: 'Instagram', href: 'https://instagram.com/purushothaman_abi_?igshid=OGY3MTU3OGY1Mw==', icon: FaInstagram },
+  { label: 'Twitter', href: 'https://twitter.com/purushoth_abi', icon: FaTwitter },
 ];
 
 const Footer = () => {

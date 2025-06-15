@@ -167,29 +167,32 @@ const LandingPage = () => {
         <div className="flex justify-center gap-6 mb-4">
           
           {/* Instagram */}
-          <a href="https://instagram.com/your-username" target="_blank" rel="noopener noreferrer" aria-label="Instagram" className="transition-transform duration-200 hover:scale-110">
+          <a href="https://instagram.com/purushothaman_abi_?igshid=OGY3MTU3OGY1Mw==" target="_blank" rel="noopener noreferrer" aria-label="Instagram" className="transition-transform duration-200 hover:scale-110">
             <img src="/social/icons8-instagram-96.png" alt="Instagram" className="w-10 h-10 object-contain" />
           </a>
           {/* GitHub */}
-          <a href="https://github.com/your-username" target="_blank" rel="noopener noreferrer" aria-label="GitHub" className="transition-transform duration-200 hover:scale-110">
+          <a href="https://github.com/purushothamanlabi/" target="_blank" rel="noopener noreferrer" aria-label="GitHub" className="transition-transform duration-200 hover:scale-110">
             <img src="/social/icons8-github-90.png" alt="GitHub" className="w-10 h-10 object-contain invert" />
           </a>
           {/* LinkedIn */}
-          <a href="https://linkedin.com/in/your-username" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn" className="transition-transform duration-200 hover:scale-110">
+          <a href="https://www.linkedin.com/in/purushothaman-d-32b786250" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn" className="transition-transform duration-200 hover:scale-110">
             <img src="/social/icons8-linkedin-96.png" alt="LinkedIn" className="w-10 h-10 object-contain" />
           </a>
         </div>
 
-        <motion.div 
+         <motion.div 
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, delay: 0.2, ease: "easeOut" }}
           className="mb-8 sm:mb-12 text-white"
         >
-          <p className="text-base sm:text-xl leading-relaxed">
-            I'm a <span className="text-cyan-400 font-semibold">full-stack</span> developer specializing in building <span className="text-cyan-400 font-semibold">exceptional</span> <span className="text-cyan-400 font-semibold">digital</span> experiences. Currently focused on building <span className="text-cyan-400 font-semibold">responsive</span> web applications with <span className="text-cyan-400 font-semibold">modern</span> technologies.
-          </p>
+       <p className="text-base sm:text-xl leading-relaxed">
+  I'm <span className="text-cyan-400 font-semibold">Purushothaman</span>, a <span className="text-cyan-400 font-semibold">full stack developer</span> with <span className="text-cyan-400 font-semibold">1 year</span> of experience in <span className="text-cyan-400 font-semibold">frontend</span>, <span className="text-cyan-400 font-semibold">backend</span>, and <span className="text-cyan-400 font-semibold">database</span> development. I’ve worked on projects in <span className="text-cyan-400 font-semibold">cybersecurity</span> and <span className="text-cyan-400 font-semibold">automation</span>, building efficient and scalable web applications.
+</p>
+
+
         </motion.div>
+
 
         <div className="relative">
 
