@@ -5,14 +5,14 @@ const socialLinks = [
   { label: 'LinkedIn', href: 'https://www.linkedin.com/in/purushothaman-d-32b786250', icon: FaLinkedin },
   { label: 'Facebook', href: 'https://www.facebook.com/profile.php?id=100069839256472', icon: FaFacebook },
   { label: 'Instagram', href: 'https://instagram.com/purushothaman_abi_?igshid=OGY3MTU3OGY1Mw==', icon: FaInstagram },
-  { label: 'Twitter', href: 'https://twitter.com/purushoth_abi', icon: FaTwitter },
+  { label: 'Twitter', href: 'https://x.com/purushoth_abi', icon: FaTwitter },
 ];
 
 const Footer = () => {
   return (
     <footer className="bg-black text-white pt-12">
       {/* Main Content Section */}
-      <div className="max-w-6xl mx-auto px-4 pb-12">
+      <div className="max-w-7xl mx-auto px-4 pb-12">
         <div className="flex flex-col md:flex-row justify-between items-start gap-12">
           {/* Left Side - CTA */}
           <div className="md:w-1/2 text-left">
@@ -53,10 +53,10 @@ const Footer = () => {
       {/* Bottom Bar */}
       <div className="border-t border-gray-800 py-4 px-4 flex flex-col md:flex-row items-center justify-between max-w-6xl mx-auto text-sm text-gray-400">
         <div className="mb-2 md:mb-0">
-          Design by <a href="#" className="underline hover:text-[#A259FF]">Quix Studio</a>
+          Design by purushothaman Abi
         </div>
         <div>
-          2024@Quix™ Studio. All Rights Reserved
+          purushothamand.dev@gmail.com
         </div>
       </div>
     </footer>

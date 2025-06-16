@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { ChevronLeft, ChevronRight } from 'lucide-react';
+import { ChevronLeft, ChevronRight, Link as LinkIcon } from 'lucide-react';
 
 const Certificates = () => {
   const [currentIndex, setCurrentIndex] = useState(0);
@@ -10,37 +10,37 @@ const Certificates = () => {
       id: 1,
       title: "React Web Development",
       issuer: "Udemy",
-      date: "2023",
-      credential: "UC-REACT2023",
+      date: "2024",
       image: "/react-course.jpg",
-      skills: ["React", "JSX", "Hooks", "Redux"]
+      skills: ["components", "hooks", "state management", "routing"],
+      link: "https://www.udemy.com/certificate/UC-REACT2023/"
     },
     {
       id: 2,
       title: "JavaScript Mastery",
-      issuer: "Coursera",
-      date: "2023",
-      credential: "CERT-JS789",
+      issuer: "Infosys Springboard",
+      date: "2024",
       image: "/javascript-course.jpg",
-      skills: ["ES6+", "Async/Await", "DOM", "APIs"]
+      skills: ["ES6+", "Async/Await", "DOM", "APIs" , "problem solving"],
+      link: "https://infyspringboard.onwingspan.com/public-assets/infosysheadstart/cert/lex_18109698366332810000_shared/1-3224b04d-0d80-498b-ace4-8017f8afd266.pdf"
     },
     {
       id: 3,
       title: "Node.js Backend Development",
-      issuer: "Udemy",
-      date: "2022",
-      credential: "UC-NODE456",
+      issuer: "SimpliLearn",
+      date: "2024",
       image: "/nodejs-course.png",
-      skills: ["Node.js", "Express", "REST APIs", "Authentication"]
+      skills: ["Node.js", "Express", "REST APIs", "Authentication"],
+      link: "https://simpli-web.app.link/e/H5kJ1spoCFb"
     },
     {
       id: 4,
       title: "MongoDB Database",
       issuer: "MongoDB Academy",
-      date: "2022",
-      credential: "MDB-CERT012",
+      date: "2024",
       image: "/mongodb-course.jpg",
-      skills: ["MongoDB", "NoSQL", "Aggregation", "Data Modeling"]
+      skills: ["collections", "aggregation", "data modeling" , "aggregation pipeline"],
+      link: "https://learn.mongodb.com/c/DK-8P1nxSUmIqdEXawTD3Q"
     }
   ];
 
@@ -203,6 +203,19 @@ const CertificateCard = ({ certificate, isActive }) => {
             </span>
           ))}
         </div>
+
+        {/* Link to Certificate */}
+        <a 
+          href={certificate.link} 
+          target="_blank" 
+          rel="noopener noreferrer" 
+          className="mt-auto pt-4 text-sm text-white hover:text-blue-400 transition-colors flex items-center gap-2"
+        >
+          <span>View Certificate</span>
+          <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
+                        </svg>
+        </a>
       </div>
     </div>
   );

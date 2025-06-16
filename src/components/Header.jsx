@@ -93,7 +93,7 @@ const Header = () => {
           
           {/* Logo/Brand */}
           <div className="text-white font-bold text-xl font-['Poppins'] tracking-wide">
-            Purushothaman
+            purushothamanD
           </div>
 
           {/* Mobile Menu Button */}

@@ -5,39 +5,39 @@ const Projects = () => {
     {
       id: 1,
       title: "BookNook.in",
-      description: "A full-stack e-commerce platform for books built with React, Node.js, and MongoDB. Features include user authentication, product management, and a responsive design.",
+      description: "A hotel booking platform developed during college where users can search and book hotels. It also includes an admin panel to manage all bookings.",
       image: "/project/booknook.png",
       tech: ["React", "Node.js", "MongoDB", "Express", "Tailwind CSS"],
-      demoLink: "#",
-      githubLink: "#"
+      demoLink: "https://booknoook.netlify.app",
+      githubLink: "https://github.com/purushothamanlabi/hotel-booking-website"
     },
     {
       id: 2,
       title: "UTest.com",
-      description: "A comprehensive testing platform for students. Features include quiz creation, real-time testing, and result analytics.",
+      description: "A project built to automate unit testing for React applications by generating unit test cases automatically on every Git commit.",
       image: "/project/utest.png",
-      tech: ["React", "Node.js", "MongoDB", "Express", "Tailwind CSS"],
+      tech: ["React", "python", "FastAPI"],
       demoLink: "#",
       githubLink: "#"
     },
     {
       id: 3,
       title: "Reptix.ai",
-      description: "A modern task management application with a sleek UI. Built using React and Firebase with real-time updates and user authentication.",
+      description: "A tool designed to automate the job application process by connecting to multiple job portals and applying on your behalf.",
       image: "/project/reptix.png",
-      tech: ["React", "Firebase", "Tailwind CSS", "Framer Motion"],
-      demoLink: "#",
-      githubLink: "#"
+      tech: ["React", "python", "FastAPI", "Mysql", "Tailwind CSS"],
+      demoLink: "https://reptix.netlify.app",
+      githubLink: "https://github.com/purushothamanlabi/flow-automation"
     },
   ];
+  
 
   return (
     <section id="projects" className="py-20 bg-[#0f0f14]">
       <div className="container mx-auto px-6">
         <h2 className="text-4xl font-bold text-center mb-12 text-white">
-          Products by me 
+          My Projects
         </h2>
-        
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
           {projects.map((project) => (
             <div key={project.id}>
@@ -77,6 +77,7 @@ const Projects = () => {
                     
                     <div className="flex gap-4">
                       <a
+                      target='_blank'
                         href={project.demoLink}
                         className="text-sm text-white hover:text-blue-400 transition-colors flex items-center gap-2"
                       >
@@ -86,6 +87,7 @@ const Projects = () => {
                         </svg>
                       </a>
                       <a
+                      target='_blank'
                         href={project.githubLink}
                         className="text-sm text-white hover:text-blue-400 transition-colors flex items-center gap-2"
                       >

@@ -4,21 +4,22 @@ const Experience = () => {
   const experiences = [
     {
       id: 1,
-      role: "Full Stack Developer",
-      company: "Tech Solutions Inc.",
-      duration: "2022 - Present",
-      description: "Led development of enterprise applications using React, Node.js, and MongoDB. Implemented CI/CD pipelines and improved application performance by 40%.",
-      tech: ["React", "Node.js", "MongoDB", "AWS", "Docker"]
+      role: "Junior Full Stack Developer",
+      company: "Finstein Advizory Service LLP",
+      duration: "2024 July 10 - Present",
+      description: "Working as a Junior Full Stack Developer, where I developed a few products related to cybersecurity and gained strong knowledge in software development and real-world problem solving.",
+      tech: ["software development", "automation", "cyber security"]
     },
     {
       id: 2,
-      role: "Frontend Developer",
-      company: "Digital Innovations",
-      duration: "2021 - 2022",
-      description: "Developed responsive web applications and collaborated with UX designers to implement modern interfaces. Reduced page load time by 60%.",
-      tech: ["React", "TypeScript", "Tailwind CSS", "Redux"]
+      role: "Software Engineer Intern",
+      company: "codealpha.tech",
+      duration: "2024 Feb - 2024 May",
+      description: "Learned the basics of web development and successfully completed the final internship task, earning a certificate for my performance.",
+      tech: ["frontend", "backend", "basic software development"]
     },
   ];
+  
 
   return (
     <section id="experience" className="py-20 bg-[#0f0f14]">
@@ -30,20 +31,19 @@ const Experience = () => {
         <div className="flex flex-col lg:flex-row gap-12">
           {/* Introduction - Now first on mobile */}
           <div className="w-full lg:w-1/2 space-y-6 order-1 lg:order-2">
-            <h3 className="text-2xl font-bold text-white mb-4">
-              My Journey in Tech
-            </h3>
-            <p className="text-gray-400 leading-relaxed">
-              With over 3 years of experience in web development, I've had the opportunity to work on diverse projects and technologies. My journey has been marked by continuous learning and growth, from building responsive user interfaces to architecting full-stack applications. Throughout my career, I've contributed to projects handling millions of users and implemented complex features like real-time data synchronization and advanced analytics.
-            </p>
-            <p className="text-gray-400 leading-relaxed">
-              focusing on creating scalable, maintainable, and user-friendly applications. My experience spans across startups and enterprise environments, giving me a well-rounded perspective on software development. I've led development teams, mentored junior developers, and actively participated in code reviews and architectural decisions.
-            </p>
-            <p className="text-gray-400 leading-relaxed">
-              Beyond technical skills, I've developed strong project management abilities, working with cross-functional teams and stakeholders to deliver projects on time and within budget. I'm passionate about staying current with industry trends and regularly contribute to open-source projects and technical communities.
-            </p>
-          </div>
-
+          <h3 className="text-2xl font-bold text-white mb-4">
+            My Journey in Tech
+          </h3>
+          <p className="text-gray-400 leading-relaxed">
+            My journey in tech began with a strong curiosity about how software powers the world. I started learning full stack development, and over time, I’ve worked on multiple real-world projects that strengthened both my frontend and backend skills. During my internship at CodeAlpha, I learned the basics of web development and successfully completed all assigned tasks.
+          </p>
+          <p className="text-gray-400 leading-relaxed">
+            Currently, I’m working as a Junior Full Stack Developer at Finstein Advizory Service LLP, where I’ve contributed to developing cybersecurity-related products. This role has helped me understand software development in a real-world setting and improved my ability to solve complex problems.
+          </p>
+          <p className="text-gray-400 leading-relaxed">
+            I'm passionate about automation, building efficient solutions, and continuously learning new technologies. I enjoy working in collaborative environments and look forward to contributing to impactful projects that solve real-world challenges.
+          </p>
+        </div>
           {/* Experience Cards - Now second on mobile */}
           <div className="w-full lg:w-1/2 space-y-6 order-2 lg:order-1">
             {experiences.map((exp) => (
