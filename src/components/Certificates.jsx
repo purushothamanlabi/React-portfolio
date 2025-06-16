@@ -92,7 +92,7 @@ const Certificates = () => {
   const visibleCards = getVisibleCards();
 
   return (
-    <section id="certificates" className="py-20 min-h-screen">
+    <section id="certificates" className="py-10 min-h-screen">
       <div className="container mx-auto px-4">
         <h2 className="text-5xl font-bold text-center text-white mb-16">
           Certifications

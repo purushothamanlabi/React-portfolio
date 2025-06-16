@@ -186,9 +186,9 @@ const LandingPage = () => {
           transition={{ duration: 0.8, delay: 0.2, ease: "easeOut" }}
           className="mb-8 sm:mb-12 text-white"
         >
-       <p className="text-base sm:text-xl leading-relaxed">
-  I'm <span className="text-cyan-400 font-semibold">Purushothaman</span>, a <span className="text-cyan-400 font-semibold">full stack developer</span> with <span className="text-cyan-400 font-semibold">1 year</span> of experience in <span className="text-cyan-400 font-semibold">frontend</span>, <span className="text-cyan-400 font-semibold">backend</span>, and <span className="text-cyan-400 font-semibold">database</span> development. I’ve worked on projects in <span className="text-cyan-400 font-semibold">cybersecurity</span> and <span className="text-cyan-400 font-semibold">automation</span>, building efficient and scalable web applications.
-</p>
+       <p className="text-sm sm:text-base md:text-lg lg:text-xl xl:text-2xl 2xl:text-2xl leading-relaxed">
+        I'm <span className="text-cyan-400 font-semibold">Purushothaman</span>, a <span className="text-cyan-400 font-semibold">full stack developer</span> with <span className="text-cyan-400 font-semibold">1 year</span> of experience in <span className="text-cyan-400 font-semibold">frontend</span>, <span className="text-cyan-400 font-semibold">backend</span>, and <span className="text-cyan-400 font-semibold">database</span> development. I’ve worked on projects in <span className="text-cyan-400 font-semibold">cybersecurity</span> and <span className="text-cyan-400 font-semibold">automation</span>, building efficient and scalable web applications.
+      </p>
 
 
         </motion.div>

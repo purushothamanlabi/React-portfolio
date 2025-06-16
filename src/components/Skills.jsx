@@ -1,4 +1,5 @@
 import React from "react";
+import { motion } from "framer-motion";
 
 const Skills = () => {
   const skills = [
@@ -194,6 +195,16 @@ const Skills = () => {
     },
   ];
 
+  // Animation variants for the cards
+  const cardVariants = {
+    offscreen: { opacity: 0, y: 40 },
+    onscreen: {
+      opacity: 1,
+      y: 0,
+      transition: { type: "spring", bounce: 0.2, duration: 0.7 }
+    }
+  };
+
   return (
     <section id="skills" className="py-20 bg-[#0f0f14]">
       <h3 className="text-4xl font-bold text-center text-white mb-12">
@@ -202,9 +213,14 @@ const Skills = () => {
       <div className="container mx-auto px-4">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-6">
           {skills.map((skill, index) => (
-            <div
+            <motion.div
               key={index}
               className="border border-[#1a1a24] rounded-lg flex flex-col p-4 h-48 hover:border-blue-500/30 transition-colors duration-300 bg-[#121220]/50"
+              initial="offscreen"
+              whileInView="onscreen"
+              viewport={{ once: true, amount: 0.2 }}
+              variants={cardVariants}
+              whileHover={{ scale: 1.05, boxShadow: "0 8px 32px 0 rgba(0, 123, 255, 0.15)" }}
             >
               <div className="flex items-center justify-center mb-4">
                 {skill.icon}
@@ -215,7 +231,7 @@ const Skills = () => {
               <p className="text-gray-400 text-sm text-center">
                 {skill.description}
               </p>
-            </div>
+            </motion.div>
           ))}
         </div>
       </div>
