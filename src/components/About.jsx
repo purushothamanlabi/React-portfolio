@@ -7,12 +7,12 @@ const About = () => {
   // Animate content with framer-motion
   const textVariants = {
     hidden: { opacity: 0, y: 20 },
-    visible: { 
-      opacity: 1, 
+    visible: {
+      opacity: 1,
       y: 0,
       transition: { duration: 0.8, ease: "easeOut" }
     }
-  };  
+  };
 
   const tabs = [
     { id: 'basic', label: 'Basic' },
@@ -21,7 +21,7 @@ const About = () => {
   ];
 
   const renderContent = () => {
-    switch(activeTab) {
+    switch (activeTab) {
       case 'basic':
         return (
           <motion.div
@@ -31,19 +31,19 @@ const About = () => {
             variants={textVariants}
             className="space-y-4 p-4 bg-[#1b2738]/10 rounded-xl"
           >
-           <div className="space-y-2">
-          <p className="text-base text-gray-300 mb-2 mt-10 leading-relaxed">
-            As a Computer Science student, I’ve always been deeply interested in <span className="text-cyan-400 font-semibold">technology</span> and <span className="text-cyan-400 font-semibold">cybersecurity</span>. My academic journey helped me explore the fundamentals while growing a strong curiosity for how digital systems work and stay secure.
-          </p>
-          
-          <p className="text-base text-gray-300 mb-2 mt-10 leading-relaxed">
-            I'm a <span className="text-cyan-400 font-semibold">self-learner</span> who enjoys exploring new tools, frameworks, and development practices. I’ve enhanced my skills through various online platforms, always seeking to stay up to date with industry trends and best practices.
-          </p>
-          
-          <p className="text-base text-gray-300 mb-2 mt-10 leading-relaxed">
-            I'm eager to apply my knowledge by working on <span className="text-cyan-400 font-semibold">real-time applications</span>, contributing to meaningful projects, and continuously growing as a developer in practical, hands-on environments.
-          </p>
-        </div>
+            <div className="space-y-2">
+              <p className="text-base text-gray-300 mb-2 mt-10 leading-relaxed">
+                As a Computer Science student, I’ve always been deeply interested in <span className="text-cyan-400 font-semibold">technology</span> and <span className="text-cyan-400 font-semibold">cybersecurity</span>. My academic journey helped me explore the fundamentals while growing a strong curiosity for how digital systems work and stay secure.
+              </p>
+
+              <p className="text-base text-gray-300 mb-2 mt-10 leading-relaxed">
+                I'm a <span className="text-cyan-400 font-semibold">self-learner</span> who enjoys exploring new tools, frameworks, and development practices. I’ve enhanced my skills through various online platforms, always seeking to stay up to date with industry trends and best practices.
+              </p>
+
+              <p className="text-base text-gray-300 mb-2 mt-10 leading-relaxed">
+                I'm eager to apply my knowledge by working on <span className="text-cyan-400 font-semibold">real-time applications</span>, contributing to meaningful projects, and continuously growing as a developer in practical, hands-on environments.
+              </p>
+            </div>
 
           </motion.div>
         );
@@ -123,8 +123,8 @@ const About = () => {
   return (
     <section id="about" className="py-12 bg-[#0f0f14] overflow-hidden">
       <div className="container mx-auto px-6">
-        <motion.h2 
-          className="text-4xl font-bold text-center mb-8 text-white"
+        <motion.h2
+          className="text-5xl md:text-6xl font-bold text-center mb-16 bg-gradient-to-r from-blue-400 via-purple-500 to-blue-400 bg-clip-text text-transparent"
           initial="hidden"
           whileInView="visible"
           viewport={{ once: true }}
@@ -133,7 +133,7 @@ const About = () => {
           About Me
         </motion.h2>
         <div className="flex flex-col md:flex-row items-start gap-8">
-          <motion.div 
+          <motion.div
             className="w-full md:w-1/2"
             initial={{ opacity: 0, scale: 0.8 }}
             whileInView={{ opacity: 1, scale: 1 }}
@@ -155,11 +155,10 @@ const About = () => {
                 <button
                   key={tab.id}
                   onClick={() => setActiveTab(tab.id)}
-                  className={`w-1/3 mx-1 first:ml-0 last:mr-0 px-2 py-2 rounded-lg transition-all duration-300 text-sm font-medium ${
-                    activeTab === tab.id
+                  className={`w-1/3 mx-1 first:ml-0 last:mr-0 px-2 py-2 rounded-lg transition-all duration-300 text-sm font-medium ${activeTab === tab.id
                       ? 'bg-blue-500 text-white shadow-lg'
                       : 'bg-[#1b2738]/20 text-gray-300 hover:bg-[#1b2738]/40'
-                  }`}
+                    }`}
                 >
                   {tab.label}
                 </button>

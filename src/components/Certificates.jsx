@@ -21,7 +21,7 @@ const Certificates = () => {
       issuer: "Infosys Springboard",
       date: "2024",
       image: "/javascript-course.jpg",
-      skills: ["ES6+", "Async/Await", "DOM", "APIs" , "problem solving"],
+      skills: ["ES6+", "Async/Await", "DOM", "APIs", "problem solving"],
       link: "https://infyspringboard.onwingspan.com/public-assets/infosysheadstart/cert/lex_18109698366332810000_shared/1-3224b04d-0d80-498b-ace4-8017f8afd266.pdf"
     },
     {
@@ -39,7 +39,7 @@ const Certificates = () => {
       issuer: "MongoDB Academy",
       date: "2024",
       image: "/mongodb-course.jpg",
-      skills: ["collections", "aggregation", "data modeling" , "aggregation pipeline"],
+      skills: ["collections", "aggregation", "data modeling", "aggregation pipeline"],
       link: "https://learn.mongodb.com/c/DK-8P1nxSUmIqdEXawTD3Q"
     }
   ];
@@ -94,11 +94,11 @@ const Certificates = () => {
   return (
     <section id="certificates" className="py-10 min-h-screen">
       <div className="container mx-auto px-4">
-        <h2 className="text-5xl font-bold text-center text-white mb-16">
+        <h2 className="text-5xl md:text-6xl font-bold text-center mb-16 bg-gradient-to-r from-blue-400 via-purple-500 to-blue-400 bg-clip-text text-transparent">
           Certifications
         </h2>
-        
-        <div 
+
+        <div
           className="relative max-w-6xl mx-auto"
           onMouseEnter={() => setIsAutoPlaying(false)}
           onMouseLeave={() => setIsAutoPlaying(true)}
@@ -124,14 +124,13 @@ const Certificates = () => {
               {visibleCards.map((certificate, index) => (
                 <div
                   key={`${certificate.id}-${currentIndex}-${index}`}
-                  className={`transition-all duration-500 ${
-                    certificate.isCenter
-                      ? 'w-[300px] md:w-[380px] h-[400px] md:h-[460px] opacity-100 scale-100 z-10' 
+                  className={`transition-all duration-500 ${certificate.isCenter
+                      ? 'w-[300px] md:w-[380px] h-[400px] md:h-[460px] opacity-100 scale-100 z-10'
                       : 'w-[280px] md:w-[320px] h-[380px] md:h-[400px] opacity-60 scale-90 z-5'
-                  }`}
+                    }`}
                 >
-                  <CertificateCard 
-                    certificate={certificate} 
+                  <CertificateCard
+                    certificate={certificate}
                     isActive={certificate.isCenter}
                   />
                 </div>
@@ -145,11 +144,10 @@ const Certificates = () => {
               <button
                 key={index}
                 onClick={() => goToSlide(index)}
-                className={`w-2 h-2 md:w-3 md:h-3 rounded-full transition-all duration-300 ${
-                  index === currentIndex 
-                    ? 'bg-blue-500 w-6 md:w-8' 
+                className={`w-2 h-2 md:w-3 md:h-3 rounded-full transition-all duration-300 ${index === currentIndex
+                    ? 'bg-blue-500 w-6 md:w-8'
                     : 'bg-gray-600 hover:bg-gray-500'
-                }`}
+                  }`}
               />
             ))}
           </div>
@@ -164,9 +162,9 @@ const CertificateCard = ({ certificate, isActive }) => {
     <div className={`group relative h-full rounded-2xl overflow-hidden transition-all duration-500 ${isActive ? '' : ''}`}>
       {/* Certificate Image */}
       <div className="relative h-[200px] overflow-hidden">
-        <img 
-          src={certificate.image} 
-          alt={certificate.title} 
+        <img
+          src={certificate.image}
+          alt={certificate.title}
           className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
           onError={(e) => {
             e.target.onerror = null;
@@ -174,7 +172,7 @@ const CertificateCard = ({ certificate, isActive }) => {
           }}
         />
         <div className="absolute inset-0 "></div>
-        
+
         {/* Credential Badge */}
         <div className="absolute top-3 right-3 bg-white/20 backdrop-blur-sm text-white text-xs px-2 py-1 rounded-full">
           {certificate.credential}
@@ -186,12 +184,12 @@ const CertificateCard = ({ certificate, isActive }) => {
         <h3 className="text-xl font-bold text-white mb-3 group-hover:text-blue-400 transition-colors duration-300 line-clamp-2">
           {certificate.title}
         </h3>
-        
+
         <div className="flex justify-between items-center mb-4">
           <span className="text-blue-400 font-medium">{certificate.issuer}</span>
           <span className="text-gray-400 text-sm">{certificate.date}</span>
         </div>
-        
+
         {/* Skills Tags */}
         <div className="flex flex-wrap gap-2 mt-1">
           {certificate.skills.map((skill, index) => (
@@ -205,16 +203,16 @@ const CertificateCard = ({ certificate, isActive }) => {
         </div>
 
         {/* Link to Certificate */}
-        <a 
-          href={certificate.link} 
-          target="_blank" 
-          rel="noopener noreferrer" 
+        <a
+          href={certificate.link}
+          target="_blank"
+          rel="noopener noreferrer"
           className="mt-auto pt-4 text-sm text-white hover:text-blue-400 transition-colors flex items-center gap-2"
         >
           <span>View Certificate</span>
           <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
-                        </svg>
+            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
+          </svg>
         </a>
       </div>
     </div>

@@ -31,7 +31,7 @@ const Projects = () => {
       githubLink: "https://github.com/purushothamanlabi/flow-automation"
     },
   ];
-  
+
   // Animation variants
   const variants = [
     {
@@ -46,13 +46,13 @@ const Projects = () => {
       offscreen: { opacity: 0, x: 80 },
       onscreen: { opacity: 1, x: 0, transition: { type: "spring", duration: 0.8 } }
     }
-   
+
   ];
 
   return (
     <section id="projects" className="py-20 bg-[#0f0f14]">
       <div className="container mx-auto px-6">
-        <h2 className="text-4xl font-bold text-center mb-12 text-white">
+        <h2 className="text-5xl md:text-6xl font-bold text-center mb-16 bg-gradient-to-r from-blue-400 via-purple-500 to-blue-400 bg-clip-text text-transparent">
           My Projects
         </h2>
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
@@ -64,13 +64,13 @@ const Projects = () => {
               viewport={{ once: true, amount: 0.2 }}
               variants={variants[index % 3]}
               className="h-full bg-neutral-900/50 backdrop-blur-sm rounded-xl p-8 border border-neutral-800"
-              // whileHover={{ scale: 1.04, boxShadow: "0 8px 32px 0 rgba(0, 123, 255, 0.15)" }}
+            // whileHover={{ scale: 1.04, boxShadow: "0 8px 32px 0 rgba(0, 123, 255, 0.15)" }}
             >
               <div className="h-full flex flex-col">
                 <div className="relative h-64 -mx-8 -mt-8 mb-6 overflow-hidden">
-                  <img 
-                    src={project.image} 
-                    alt={project.title} 
+                  <img
+                    src={project.image}
+                    alt={project.title}
                     className="w-full h-full object-contain"
                     onError={(e) => {
                       console.error(`Error loading image: ${project.image}`);
@@ -78,15 +78,15 @@ const Projects = () => {
                     }}
                   />
                 </div>
-                
+
                 <h3 className="text-xl font-bold text-white mb-3">
                   {project.title}
                 </h3>
-                
+
                 <p className="text-gray-400 mb-4 flex-grow">
                   {project.description}
                 </p>
-                
+
                 <div className="space-y-4">
                   <div className="flex flex-wrap gap-2">
                     {project.tech.map((tech, index) => (
@@ -98,7 +98,7 @@ const Projects = () => {
                       </span>
                     ))}
                   </div>
-                  
+
                   <div className="flex gap-4">
                     <a
                       target='_blank'

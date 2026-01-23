@@ -20,7 +20,7 @@ const Experience = () => {
       tech: ["frontend", "backend", "basic software development"]
     },
   ];
-  
+
   // Animation variants
   const cardVariants = {
     offscreen: { opacity: 0, y: 40 },
@@ -43,7 +43,7 @@ const Experience = () => {
   return (
     <section id="experience" className="py-20 bg-[#0f0f14]">
       <div className="container mx-auto px-6">
-        <h2 className="text-4xl font-bold text-center mb-12 text-white ">
+        <h2 className="text-5xl md:text-6xl font-bold text-center mb-16 bg-gradient-to-r from-blue-400 via-purple-500 to-blue-400 bg-clip-text text-transparent">
           Work Experience
         </h2>
 
@@ -72,7 +72,7 @@ const Experience = () => {
           {/* Experience Cards - Now second on mobile */}
           <div className="w-full lg:w-1/2 space-y-3 md:space-y-6 order-2 lg:order-1">
             {experiences.map((exp, idx) => (
-              <motion.div 
+              <motion.div
                 key={exp.id}
                 className="bg-neutral-900/50 backdrop-blur-sm rounded-xl p-3 md:p-6 border border-neutral-800"
                 initial="offscreen"
@@ -89,11 +89,11 @@ const Experience = () => {
                   </div>
                   <span className="text-xs md:text-sm text-gray-400 md:mt-0 mt-2">{exp.duration}</span>
                 </div>
-                
+
                 <p className="text-gray-400 mb-2 md:mb-4 text-sm md:text-base">
                   {exp.description}
                 </p>
-                
+
                 <div className="flex flex-wrap gap-2">
                   {exp.tech.map((tech, index) => (
                     <span
