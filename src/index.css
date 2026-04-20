@@ -6,6 +6,19 @@ html {
 
 body {
   background-color: #0f1115;
+  color: var(--text-primary);
+  font-family: 'Poppins', sans-serif;
+}
+
+#root {
+  font-family: inherit;
+}
+
+button,
+input,
+textarea,
+select {
+  font: inherit;
 }
 
 .noise {

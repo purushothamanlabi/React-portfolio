@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { ChevronLeft, ChevronRight, Link as LinkIcon } from 'lucide-react';
+import { ChevronLeft, ChevronRight } from 'lucide-react';
 
 const Certificates = () => {
   const [currentIndex, setCurrentIndex] = useState(0);
@@ -124,9 +124,10 @@ const Certificates = () => {
               {visibleCards.map((certificate, index) => (
                 <div
                   key={`${certificate.id}-${currentIndex}-${index}`}
-                  className={`transition-all duration-500 ${certificate.isCenter
-                      ? 'w-[300px] md:w-[380px] h-[400px] md:h-[460px] opacity-100 scale-100 z-10'
-                      : 'w-[280px] md:w-[320px] h-[380px] md:h-[400px] opacity-60 scale-90 z-5'
+                  className={`h-[380px] w-[280px] md:h-[400px] md:w-[320px] transition-all duration-500 ease-in-out ${
+                    certificate.isCenter
+                      ? 'z-10 opacity-100 scale-100 md:scale-[1.08]'
+                      : 'z-0 opacity-60 scale-90'
                     }`}
                 >
                   <CertificateCard
