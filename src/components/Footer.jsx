@@ -10,7 +10,7 @@ const socialLinks = [
 
 const Footer = () => {
   return (
-    <footer className="bg-black text-white pt-12">
+    <footer className="text-white pt-12">
       {/* Main Content Section */}
       <div className="max-w-7xl mx-auto px-4 pb-12">
         <div className="flex flex-col md:flex-row justify-between items-start gap-12">

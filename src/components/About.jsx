@@ -170,7 +170,7 @@ const About = () => {
   };
 
   return (
-    <section id="about" className="overflow-hidden bg-[#0f0f14] py-16 sm:py-20">
+    <section id="about" className="overflow-hidden py-16 sm:py-20">
       <div className="container mx-auto px-6">
         <motion.div
           initial="hidden"
