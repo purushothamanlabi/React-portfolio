@@ -67,7 +67,7 @@ const Footer = () => {
                           />
                         </span>
                       )}
-                      <span>{link.label}</span>
+                      {!link.image && <span>{link.label}</span>}
                     </a>
                   </li>
                 );

@@ -98,7 +98,6 @@ const ContactMe = () => {
   };
 
   const handleSubmit = () => {
-    // Save to localStorage so user can't resubmit
     localStorage.setItem('portfolio_contacted', 'true');
     setStep(5);
   };
@@ -106,8 +105,8 @@ const ContactMe = () => {
   return (
     <section id="contact" className="relative overflow-hidden py-16 lg:py-20">
       <div className="container mx-auto px-6">
-        <div className="grid gap-10 lg:grid-cols-[0.9fr_1.1fr] lg:items-center">
-          <div className="mx-auto max-w-xl text-center lg:mx-0 lg:text-left">
+        <div className="grid gap-10 lg:grid-cols-[0.9fr_1.1fr] lg:items-start">
+          <div className="mx-auto max-w-xl pt-10 text-center lg:mx-0 lg:text-left lg:pt-14">
             <div className="mb-6 flex items-center justify-center gap-3 text-xs font-semibold uppercase tracking-[0.28em] text-cyan-300 lg:justify-start">
               <span className="h-px w-10 bg-cyan-300/70" />
               <span>06 - Contact</span>

@@ -103,16 +103,16 @@ const Projects = () => {
       image: "/project/booknook.png",
       tech: ["React", "Node.js", "MongoDB", "Express", "Tailwind CSS"],
       demoLink: "https://booknoook.netlify.app",
-      githubLink: "https://github.com/purushothamanlabi/hotel-booking-website"
+      githubLink: "https://github.com/purushothamanlabi"
     },
     {
       id: 2,
-      title: "UTest.com",
-      description: "An automated testing suite that generates high-coverage unit tests for React components using AI-driven analysis on Git commits.",
-      image: "/project/utest.png",
-      tech: ["React", "python", "FastAPI"],
-      demoLink: "#",
-      githubLink: "#"
+      title: "Zerohumans.in",
+      description: "A GraphFlow-based multi-agent AI platform where 6 autonomous agents execute full SDLC phases — SRS, UI/UX, Development, Testing & Deployment — with isolated project memory and live WebSocket streaming.",
+      image: "/project/zerohumans.png",
+      tech: ["Next.js", "FastAPI", "AutoGen", "PostgreSQL", "GraphFlow"],
+      demoLink: "https://zerohumans.in",
+      githubLink: "https://github.com/purushothamanlabi"
     },
     {
       id: 3,
@@ -121,7 +121,7 @@ const Projects = () => {
       image: "/project/reptix.png",
       tech: ["React", "python", "FastAPI", "Mysql", "Tailwind CSS"],
       demoLink: "https://reptix.netlify.app",
-      githubLink: "https://github.com/purushothamanlabi/flow-automation"
+      githubLink: "https://github.com/purushothamanlabi"
     },
   ];
 
@@ -135,7 +135,7 @@ const Projects = () => {
           </div>
 
           <h2 className="text-4xl font-black leading-[1.04] text-white sm:text-5xl lg:text-6xl">
-            Selected <span className="text-cyan-400">Works</span>
+            Personal <span className="text-cyan-400">Projects</span>
           </h2>
         </div>
 
