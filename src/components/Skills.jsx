@@ -5,7 +5,7 @@ const Skills = () => {
   const skills = [
     {
       title: "HTML",
-      description: "Building interactive user interfaces with React",
+      description: "Semantic markup and structural foundation for modern accessible web applications.",
       icon: (
         <img
           width="48"
@@ -17,7 +17,7 @@ const Skills = () => {
     },
     {
       title: "CSS",
-      description: "Building interactive user interfaces with React",
+      description: "Advanced styling, responsive layouts, and complex animations using modern CSS features.",
       icon: (
         <img
           width="48"
@@ -30,7 +30,7 @@ const Skills = () => {
 
     {
       title: "JavaScript",
-      description: "Core language for web development",
+      description: "Modern ES6+ development, asynchronous programming, and DOM manipulation.",
       icon: (
         <img
           width="48"
@@ -43,7 +43,7 @@ const Skills = () => {
 
     {
       title: "React",
-      description: "Building interactive user interfaces with React",
+      description: "Building scalable SPAs with hooks, state management, and component architecture.",
       icon: (
         <img
           width="48"
