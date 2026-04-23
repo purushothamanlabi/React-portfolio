@@ -1,58 +1,86 @@
-import React, { useState, useEffect } from 'react';
+import { useEffect, useState } from 'react';
 import { ChevronLeft, ChevronRight } from 'lucide-react';
+
+const certificates = [
+  {
+    id: 1,
+    title: "React Web Development",
+    issuer: "Udemy",
+    date: "2024",
+    image: "/react-course.jpg",
+    skills: ["components", "hooks", "state management", "routing"],
+    link: "https://www.udemy.com/certificate/UC-REACT2023/"
+  },
+  {
+    id: 2,
+    title: "JavaScript Mastery",
+    issuer: "Infosys Springboard",
+    date: "2024",
+    image: "/javascript-course.jpg",
+    skills: ["ES6+", "Async/Await", "DOM", "APIs", "problem solving"],
+    link: "https://infyspringboard.onwingspan.com/public-assets/infosysheadstart/cert/lex_18109698366332810000_shared/1-3224b04d-0d80-498b-ace4-8017f8afd266.pdf"
+  },
+  {
+    id: 3,
+    title: "Node.js Backend Development",
+    issuer: "SimpliLearn",
+    date: "2024",
+    image: "/nodejs-course.png",
+    skills: ["Node.js", "Express", "REST APIs", "Authentication"],
+    link: "https://simpli-web.app.link/e/H5kJ1spoCFb"
+  },
+  {
+    id: 4,
+    title: "MongoDB Database",
+    issuer: "MongoDB Academy",
+    date: "2024",
+    image: "/mongodb-course.jpg",
+    skills: ["collections", "aggregation", "data modeling", "aggregation pipeline"],
+    link: "https://learn.mongodb.com/c/DK-8P1nxSUmIqdEXawTD3Q"
+  },
+  {
+    id: 5,
+    title: "Anthropic AI Certification",
+    issuer: "Anthropic",
+    date: "2026",
+    image: "/Anthropic-cer.png",
+    skills: ["AI", "LLMs", "prompting", "Claude"],
+    link: "/Anthropic-cer.png"
+  }
+];
+
+const useDesktopCarousel = () => {
+  const [isDesktop, setIsDesktop] = useState(() => (
+    typeof window !== 'undefined' && window.matchMedia('(min-width: 768px)').matches
+  ));
+
+  useEffect(() => {
+    const mediaQuery = window.matchMedia('(min-width: 768px)');
+    const updateMatch = () => setIsDesktop(mediaQuery.matches);
+
+    updateMatch();
+    mediaQuery.addEventListener('change', updateMatch);
+
+    return () => mediaQuery.removeEventListener('change', updateMatch);
+  }, []);
+
+  return isDesktop;
+};
 
 const Certificates = () => {
   const [currentIndex, setCurrentIndex] = useState(0);
   const [isAutoPlaying, setIsAutoPlaying] = useState(true);
-
-  const certificates = [
-    {
-      id: 1,
-      title: "React Web Development",
-      issuer: "Udemy",
-      date: "2024",
-      image: "/react-course.jpg",
-      skills: ["components", "hooks", "state management", "routing"],
-      link: "https://www.udemy.com/certificate/UC-REACT2023/"
-    },
-    {
-      id: 2,
-      title: "JavaScript Mastery",
-      issuer: "Infosys Springboard",
-      date: "2024",
-      image: "/javascript-course.jpg",
-      skills: ["ES6+", "Async/Await", "DOM", "APIs", "problem solving"],
-      link: "https://infyspringboard.onwingspan.com/public-assets/infosysheadstart/cert/lex_18109698366332810000_shared/1-3224b04d-0d80-498b-ace4-8017f8afd266.pdf"
-    },
-    {
-      id: 3,
-      title: "Node.js Backend Development",
-      issuer: "SimpliLearn",
-      date: "2024",
-      image: "/nodejs-course.png",
-      skills: ["Node.js", "Express", "REST APIs", "Authentication"],
-      link: "https://simpli-web.app.link/e/H5kJ1spoCFb"
-    },
-    {
-      id: 4,
-      title: "MongoDB Database",
-      issuer: "MongoDB Academy",
-      date: "2024",
-      image: "/mongodb-course.jpg",
-      skills: ["collections", "aggregation", "data modeling", "aggregation pipeline"],
-      link: "https://learn.mongodb.com/c/DK-8P1nxSUmIqdEXawTD3Q"
-    }
-  ];
+  const isDesktop = useDesktopCarousel();
 
   useEffect(() => {
-    if (!isAutoPlaying) return;
+    if (!isAutoPlaying) return undefined;
 
     const interval = setInterval(() => {
-      handleNext();
-    }, 3000);
+      setCurrentIndex((prev) => (prev + 1) % certificates.length);
+    }, 3600);
 
     return () => clearInterval(interval);
-  }, [isAutoPlaying, currentIndex]);
+  }, [isAutoPlaying]);
 
   const handleNext = () => {
     setCurrentIndex((prev) => (prev + 1) % certificates.length);
@@ -68,67 +96,74 @@ const Certificates = () => {
   };
 
   const getVisibleCards = () => {
-    const cards = [];
-    // For mobile, only show current card
-    if (window.innerWidth < 768) {
+    if (!isDesktop) {
       return [{
         ...certificates[currentIndex],
         position: 0,
         isCenter: true
       }];
     }
-    // For desktop, show 3 cards
-    for (let i = 0; i < 3; i++) {
-      const index = (currentIndex - 1 + i + certificates.length) % certificates.length;
-      cards.push({
+
+    return [-1, 0, 1].map((offset) => {
+      const index = (currentIndex + offset + certificates.length) % certificates.length;
+
+      return {
         ...certificates[index],
-        position: i,
-        isCenter: i === 1
-      });
-    }
-    return cards;
+        position: offset,
+        isCenter: offset === 0
+      };
+    });
   };
 
   const visibleCards = getVisibleCards();
 
   return (
-    <section id="certificates" className="py-10 min-h-screen">
-      <div className="container mx-auto px-4">
-        <h2 className="text-5xl md:text-6xl font-bold text-center mb-16 bg-gradient-to-r from-blue-400 via-purple-500 to-blue-400 bg-clip-text text-transparent">
+    <section id="certificates" className="py-14 lg:py-16">
+      <div className="container mx-auto px-6">
+        <h2 className="mb-8 text-center text-2xl font-black leading-none text-white sm:text-3xl md:text-4xl xl:text-5xl">
           Certifications
         </h2>
 
         <div
-          className="relative max-w-6xl mx-auto"
+          className="mx-auto max-w-6xl"
           onMouseEnter={() => setIsAutoPlaying(false)}
           onMouseLeave={() => setIsAutoPlaying(true)}
         >
-          {/* Navigation Arrows */}
-          <button
-            onClick={handlePrevious}
-            className="absolute top-1/2 -translate-y-1/2 -left-4 md:-left-16 z-20 text-white p-2 md:p-3 rounded-full transition-all duration-300 hover:scale-110 bg-white/10 backdrop-blur-sm"
-          >
-            <ChevronLeft size={20} className="md:w-6 md:h-6" />
-          </button>
+          <div className="mb-5 flex items-center justify-between gap-4 px-1">
+            <span className="text-xs font-semibold uppercase tracking-[0.28em] text-cyan-300">
+              Credential Library
+            </span>
+            <span className="text-xs font-semibold uppercase tracking-[0.2em] text-slate-500">
+              {String(currentIndex + 1).padStart(2, '0')} / {String(certificates.length).padStart(2, '0')}
+            </span>
+          </div>
 
-          <button
-            onClick={handleNext}
-            className="absolute top-1/2 -translate-y-1/2 -right-4 md:-right-16 z-20 text-white p-2 md:p-3 rounded-full transition-all duration-300 hover:scale-110 bg-white/10 backdrop-blur-sm"
-          >
-            <ChevronRight size={20} className="md:w-6 md:h-6" />
-          </button>
+          <div className="relative">
+            <button
+              onClick={handlePrevious}
+              aria-label="Previous certificate"
+              className="absolute left-1 top-1/2 z-20 flex h-10 w-10 -translate-y-1/2 items-center justify-center rounded-full border border-slate-700/35 bg-slate-950/70 text-slate-300 backdrop-blur-sm transition-all duration-300 hover:border-cyan-400/40 hover:text-cyan-300 md:-left-12"
+            >
+              <ChevronLeft size={20} />
+            </button>
 
-          {/* Carousel Container */}
-          <div className="relative h-[500px] overflow-hidden rounded-2xl">
-            <div className="flex items-center justify-center gap-4 md:gap-8 h-full transition-transform duration-500 ease-in-out">
-              {visibleCards.map((certificate, index) => (
+            <button
+              onClick={handleNext}
+              aria-label="Next certificate"
+              className="absolute right-1 top-1/2 z-20 flex h-10 w-10 -translate-y-1/2 items-center justify-center rounded-full border border-slate-700/35 bg-slate-950/70 text-slate-300 backdrop-blur-sm transition-all duration-300 hover:border-cyan-400/40 hover:text-cyan-300 md:-right-12"
+            >
+              <ChevronRight size={20} />
+            </button>
+
+            <div className="flex min-h-[420px] items-center justify-center gap-4 overflow-hidden px-12 md:gap-6 lg:gap-8">
+              {visibleCards.map((certificate) => (
                 <div
-                  key={`${certificate.id}-${currentIndex}-${index}`}
-                  className={`h-[380px] w-[280px] md:h-[400px] md:w-[320px] transition-all duration-500 ease-in-out ${
+                  key={`${certificate.id}-${certificate.position}-${currentIndex}`}
+                  className={`w-full max-w-[320px] transition-all duration-500 md:w-[31%] md:max-w-none ${
                     certificate.isCenter
-                      ? 'z-10 opacity-100 scale-100 md:scale-[1.08]'
-                      : 'z-0 opacity-60 scale-90'
-                    }`}
+                      ? 'z-10 scale-100 opacity-100'
+                      : 'z-0 hidden scale-[0.94] opacity-45 md:block'
+                  }`}
                 >
                   <CertificateCard
                     certificate={certificate}
@@ -139,16 +174,17 @@ const Certificates = () => {
             </div>
           </div>
 
-          {/* Dots Indicator */}
-          <div className="flex justify-center gap-2 md:gap-3 mt-8">
+          <div className="mt-6 flex items-center justify-center gap-2">
             {certificates.map((_, index) => (
               <button
                 key={index}
                 onClick={() => goToSlide(index)}
-                className={`w-2 h-2 md:w-3 md:h-3 rounded-full transition-all duration-300 ${index === currentIndex
-                    ? 'bg-blue-500 w-6 md:w-8'
-                    : 'bg-gray-600 hover:bg-gray-500'
-                  }`}
+                aria-label={`Show certificate ${index + 1}`}
+                className={`h-2 rounded-full transition-all duration-300 ${
+                  index === currentIndex
+                    ? 'w-8 bg-cyan-300'
+                    : 'w-2 bg-slate-700 hover:bg-slate-500'
+                }`}
               />
             ))}
           </div>
@@ -160,58 +196,55 @@ const Certificates = () => {
 
 const CertificateCard = ({ certificate, isActive }) => {
   return (
-    <div className={`group relative h-full rounded-2xl overflow-hidden transition-all duration-500 ${isActive ? '' : ''}`}>
-      {/* Certificate Image */}
-      <div className="relative h-[200px] overflow-hidden">
+    <div
+      className={`group flex h-[390px] flex-col overflow-hidden rounded-lg border bg-[#0B1220]/90 shadow-[0_18px_60px_rgba(2,6,23,0.24)] backdrop-blur-sm transition-all duration-300 ${
+        isActive
+          ? 'border-cyan-400/30'
+          : 'border-slate-700/25'
+      }`}
+    >
+      <div className="relative h-44 overflow-hidden border-b border-slate-700/25 bg-slate-950/50">
         <img
           src={certificate.image}
           alt={certificate.title}
-          className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
+          className="h-full w-full object-cover transition-transform duration-700 group-hover:scale-105"
           onError={(e) => {
-            e.target.onerror = null;
-            e.target.src = '/images/certificates/default-cert.jpg';
+            e.currentTarget.onerror = null;
+            e.currentTarget.src = '/images/certificates/default-cert.jpg';
           }}
         />
-        <div className="absolute inset-0 "></div>
-
-        {/* Credential Badge */}
-        <div className="absolute top-3 right-3 bg-white/20 backdrop-blur-sm text-white text-xs px-2 py-1 rounded-full">
-          {certificate.credential}
-        </div>
+        <div className="absolute inset-0 bg-gradient-to-t from-[#0B1220]/40 to-transparent" />
+        <span className="absolute right-3 top-3 rounded-full border border-slate-100/15 bg-slate-950/60 px-3 py-1 text-xs font-semibold text-slate-200 backdrop-blur-sm">
+          {certificate.date}
+        </span>
       </div>
 
-      {/* Card Content */}
-      <div className="p-6 bg-gray-800/90 backdrop-blur-sm border border-blue-500/30 rounded-b-lg h-[260px] flex flex-col">
-        <h3 className="text-xl font-bold text-white mb-3 group-hover:text-blue-400 transition-colors duration-300 line-clamp-2">
+      <div className="flex flex-1 flex-col p-5">
+        <h3 className="line-clamp-2 text-lg font-bold leading-snug text-white transition-colors duration-300 group-hover:text-cyan-200">
           {certificate.title}
         </h3>
 
-        <div className="flex justify-between items-center mb-4">
-          <span className="text-blue-400 font-medium">{certificate.issuer}</span>
-          <span className="text-gray-400 text-sm">{certificate.date}</span>
-        </div>
+        <p className="mt-2 text-sm font-medium text-cyan-300">{certificate.issuer}</p>
 
-        {/* Skills Tags */}
-        <div className="flex flex-wrap gap-2 mt-1">
-          {certificate.skills.map((skill, index) => (
+        <div className="mt-4 flex flex-wrap gap-2">
+          {certificate.skills.map((skill) => (
             <span
-              key={index}
-              className="text-xs text-blue-300 px-3 py-1 rounded-full border border-blue-700/30 hover:bg-blue-800/40 transition-colors duration-300"
+              key={skill}
+              className="rounded-full border border-cyan-400/10 bg-slate-900/70 px-3 py-1 text-xs font-medium text-cyan-300"
             >
               {skill}
             </span>
           ))}
         </div>
 
-        {/* Link to Certificate */}
         <a
           href={certificate.link}
           target="_blank"
           rel="noopener noreferrer"
-          className="mt-auto pt-4 text-sm text-white hover:text-blue-400 transition-colors flex items-center gap-2"
+          className="mt-auto inline-flex items-center gap-2 pt-5 text-sm font-semibold text-slate-200 transition-colors duration-300 hover:text-cyan-300"
         >
           <span>View Certificate</span>
-          <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <svg className="h-4 w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
           </svg>
         </a>

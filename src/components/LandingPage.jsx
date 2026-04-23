@@ -1,6 +1,7 @@
 import { motion } from "framer-motion";
 import { useState } from "react";
 import TrueFocus from "../Animation/textBlur";
+import resumePdf from "../resume/purushothaman-d.pdf";
 
 const FloatingElement = ({ children, delay = 0, className = "" }) => {
   return (
@@ -160,17 +161,14 @@ const LandingPage = () => {
 
         <div className="mb-4 flex flex-wrap items-center justify-center gap-5 sm:gap-6">
           <a
-            href="https://www.naukri.com/"
+            href="https://www.linkedin.com/in/purushothamanmernd"
             target="_blank"
             rel="noopener noreferrer"
-            aria-label="Naukri"
-            className="flex items-center transition-transform duration-200 hover:scale-110"
+            aria-label="LinkedIn"
+            className="flex items-center gap-2 transition-transform duration-200 hover:scale-110"
           >
-            <img
-              src="/social/naukri.png"
-              alt="Naukri"
-              className="h-7 w-auto max-w-[4.75rem] object-contain sm:h-8"
-            />
+            <img src="/social/icons8-linkedin-96.png" alt="LinkedIn" className="h-6 w-6 object-contain sm:h-7 sm:w-7" />
+            <span className="text-[0.95rem] font-medium leading-none text-[#0A66C2] sm:text-[1.1rem]">LinkedIn</span>
           </a>
 
           <a
@@ -185,14 +183,17 @@ const LandingPage = () => {
           </a>
 
           <a
-            href="https://www.linkedin.com/in/purushothaman-d-32b786250"
+            href="https://www.naukri.com/"
             target="_blank"
             rel="noopener noreferrer"
-            aria-label="LinkedIn"
-            className="flex items-center gap-2 transition-transform duration-200 hover:scale-110"
+            aria-label="Naukri"
+            className="flex items-center transition-transform duration-200 hover:scale-110"
           >
-            <img src="/social/icons8-linkedin-96.png" alt="LinkedIn" className="h-6 w-6 object-contain sm:h-7 sm:w-7" />
-            <span className="text-[0.95rem] font-medium leading-none text-[#0A66C2] sm:text-[1.1rem]">LinkedIn</span>
+            <img
+              src="/social/naukri.png"
+              alt="Naukri"
+              className="h-7 w-auto max-w-[4.75rem] object-contain sm:h-8"
+            />
           </a>
         </div>
 
@@ -220,9 +221,13 @@ const LandingPage = () => {
             <button className="w-1/2 rounded-full bg-blue-600 px-4 py-2 font-medium text-white transition-colors hover:bg-blue-700 sm:w-auto sm:px-8 sm:py-3">
               Hire me
             </button>
-            <button className="w-1/2 rounded-full bg-gray-800/50 px-4 py-2 font-medium text-white backdrop-blur-sm transition-colors hover:bg-gray-700 sm:w-auto sm:px-8 sm:py-3">
-              Contact Me
-            </button>
+            <a
+              href={resumePdf}
+              download="Purushothaman-CV.pdf"
+              className="w-1/2 rounded-full bg-gray-800/50 px-4 py-2 text-center font-medium text-white backdrop-blur-sm transition-colors hover:bg-gray-700 sm:w-auto sm:px-8 sm:py-3"
+            >
+              Download CV
+            </a>
           </motion.div>
         </div>
       </div>

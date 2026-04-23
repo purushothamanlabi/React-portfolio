@@ -1,5 +1,5 @@
 import React from 'react';
-import { motion } from 'framer-motion';
+import { motion as Motion } from 'framer-motion';
 
 const Projects = () => {
   const projects = [
@@ -50,14 +50,22 @@ const Projects = () => {
   ];
 
   return (
-    <section id="projects" className="py-20">
+    <section id="projects" className="py-14 lg:py-16">
       <div className="container mx-auto px-6">
-        <h2 className="text-5xl md:text-6xl font-bold text-center mb-16 bg-gradient-to-r from-blue-400 via-purple-500 to-blue-400 bg-clip-text text-transparent">
-          My Projects
-        </h2>
+        <div className="mb-10 space-y-5">
+          <div className="flex items-center gap-4 text-xs font-semibold uppercase tracking-[0.35em] text-cyan-400">
+            <span className="h-px w-12 bg-cyan-400/80" />
+            <span>03 - My Projects</span>
+          </div>
+
+          <h2 className="text-3xl font-black leading-[1.04] text-white sm:text-4xl lg:text-5xl">
+            My Projects
+          </h2>
+        </div>
+
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
           {projects.map((project, index) => (
-            <motion.div
+            <Motion.div
               key={project.id}
               initial="offscreen"
               whileInView="onscreen"
@@ -123,7 +131,7 @@ const Projects = () => {
                   </div>
                 </div>
               </div>
-            </motion.div>
+            </Motion.div>
           ))}
         </div>
       </div>

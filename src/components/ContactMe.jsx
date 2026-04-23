@@ -134,31 +134,45 @@ const ContactMe = () => {
   };
 
   return (
-    <section id="contact" className="py-20 relative overflow-hidden">
-      <div className="container mx-auto px-4 max-w-4xl">
-        <h2 className="text-5xl md:text-6xl font-bold text-center mb-16 bg-gradient-to-r from-blue-400 via-purple-500 to-blue-400 bg-clip-text text-transparent">
-          Get In Touch
-        </h2>
+    <section id="contact" className="relative overflow-hidden py-16 lg:py-20">
+      <div className="container mx-auto px-6">
+        <div className="grid gap-10 lg:grid-cols-[0.9fr_1.1fr] lg:items-center">
+          <div className="mx-auto max-w-xl text-center lg:mx-0 lg:text-left">
+            <div className="mb-6 flex items-center justify-center gap-3 text-xs font-semibold uppercase tracking-[0.28em] text-cyan-300 lg:justify-start">
+              <span className="h-px w-10 bg-cyan-300/70" />
+              <span>06 - Contact</span>
+            </div>
 
-        {/* Code Editor Window */}
-        <div className="relative rounded-2xl overflow-hidden border-2 border-blue-500/30 shadow-2xl shadow-blue-500/20">
+            <h2 className="text-3xl font-black leading-tight tracking-normal text-slate-100 sm:text-4xl lg:text-5xl xl:text-6xl">
+              LET&apos;S <span className="text-cyan-400">BUILD</span>
+              <br />
+              SOMETHING GREAT
+            </h2>
+
+            <p className="mx-auto mt-8 max-w-md text-sm leading-7 text-slate-300 sm:text-base lg:mx-0">
+              Whether it's a product idea, a technical challenge, or just a good conversation about building things - I'd love to hear from you.
+            </p>
+          </div>
+
+          {/* Code Editor Window */}
+          <div className="relative overflow-hidden rounded-lg border border-slate-700/30 bg-[#0b1220]/80 shadow-[0_24px_80px_rgba(2,6,23,0.35)] backdrop-blur-sm">
           {/* macOS Window Header */}
-          <div className="bg-gradient-to-r from-gray-900 to-gray-800 px-4 py-3 flex items-center justify-between border-b border-gray-700">
+          <div className="flex items-center justify-between border-b border-slate-700/30 bg-slate-950/50 px-4 py-3">
             <div className="flex gap-2">
               <div className="w-3 h-3 rounded-full bg-red-500/80"></div>
               <div className="w-3 h-3 rounded-full bg-yellow-500/80"></div>
               <div className="w-3 h-3 rounded-full bg-green-500/80"></div>
             </div>
-            <div className="text-gray-400 text-sm font-mono flex items-center gap-2">
-              <span className="text-blue-400">JS</span> contact.js
+            <div className="flex items-center gap-2 font-mono text-sm text-slate-400">
+              <span className="text-cyan-300">JS</span> contact.js
             </div>
           </div>
 
           {/* Editor Body */}
-          <div className="bg-[#0f1115] p-6 font-mono text-sm grid grid-cols-1 md:grid-cols-2 gap-6">
+          <div className="grid grid-cols-1 gap-6 bg-[#050a12]/85 p-5 font-mono text-sm xl:grid-cols-[1.05fr_0.95fr]">
 
             {/* Left Column: Code Display */}
-            <div className="hidden md:block border-r border-gray-800 pr-6 select-none leading-relaxed">
+            <div className="hidden select-none border-r border-slate-700/30 pr-6 leading-relaxed xl:block">
               <div className="space-y-1 text-gray-400/80">
                 <div className="flex"><span className="text-gray-700 w-6">1</span><span className="text-purple-400">const</span><span className="text-blue-300 ml-2">Contact</span> <span className="text-white">=</span> <span className="text-cyan-400">require</span>(<span className="text-green-400 text-opacity-80">'./ContactMe'</span>);</div>
                 <div className="flex"><span className="text-gray-700 w-6">2</span></div>
@@ -185,15 +199,15 @@ const ContactMe = () => {
             </div>
 
             {/* Right Column: Terminal/Interactive Area */}
-            <div className="flex flex-col h-full min-h-[300px]">
+            <div className="flex h-full min-h-[320px] flex-col">
 
               {/* Terminal Header */}
-              <div className="flex items-center justify-between mb-4 border-b border-gray-800 pb-2">
-                <span className="text-xs uppercase tracking-wider text-gray-500 font-bold">Terminal</span>
+              <div className="mb-4 flex items-center justify-between border-b border-slate-700/30 pb-2">
+                <span className="text-xs font-bold uppercase tracking-[0.24em] text-slate-500">Terminal</span>
                 <div className="flex items-center gap-2">
                   <button
                     onClick={handleReset}
-                    className="p-1 hover:bg-gray-800 rounded transition-colors text-gray-500 hover:text-white group"
+                    className="group rounded p-1 text-slate-500 transition-colors hover:bg-slate-800/80 hover:text-cyan-300"
                     title="Reset Terminal"
                   >
                     <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="group-hover:rotate-180 transition-transform duration-500">
@@ -203,8 +217,8 @@ const ContactMe = () => {
                   </button>
                   {step === 0 && (
                     <span className="flex h-2 w-2">
-                      <span className="animate-ping absolute inline-flex h-2 w-2 rounded-full bg-blue-400 opacity-75"></span>
-                      <span className="relative inline-flex rounded-full h-2 w-2 bg-blue-500"></span>
+                      <span className="absolute inline-flex h-2 w-2 animate-ping rounded-full bg-cyan-400 opacity-75"></span>
+                      <span className="relative inline-flex h-2 w-2 rounded-full bg-cyan-500"></span>
                     </span>
                   )}
                 </div>
@@ -219,11 +233,11 @@ const ContactMe = () => {
                     <div className="text-gray-500 text-center text-xs">Press button to execute</div>
                     <button
                       onClick={handleRunCode}
-                      className="group relative inline-flex items-center gap-2 px-8 py-3 bg-blue-600/10 text-blue-400 border border-blue-500/50 rounded-lg hover:bg-blue-600/20 transition-all duration-300 backdrop-blur-sm"
+                      className="group relative inline-flex items-center gap-2 rounded-lg border border-cyan-400/35 bg-cyan-400/10 px-8 py-3 text-cyan-300 transition-all duration-300 hover:bg-cyan-400/15"
                     >
                       <span className="text-lg">▶</span>
                       <span className="font-bold tracking-wide">RUN SCRIPT</span>
-                      <div className="absolute inset-0 rounded-lg bg-blue-400/20 blur-md opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+                      <div className="absolute inset-0 rounded-lg bg-cyan-400/15 opacity-0 blur-md transition-opacity duration-300 group-hover:opacity-100"></div>
                     </button>
                   </div>
                 )}
@@ -233,10 +247,10 @@ const ContactMe = () => {
                   <div key={index} className={`${line.type === 'error' ? 'text-red-400' :
                     line.type === 'success' ? 'text-green-400' :
                       line.type === 'user' ? 'text-white ml-2 opacity-90' :
-                        line.type === 'info' ? 'text-blue-300' :
+                        line.type === 'info' ? 'text-cyan-300' :
                           'text-gray-400' // system
                     }`}>
-                    {line.type === 'user' && <span className="text-blue-500 mr-2">➜</span>}
+                    {line.type === 'user' && <span className="mr-2 text-cyan-400">➜</span>}
                     {line.text}
                   </div>
                 ))}
@@ -247,7 +261,7 @@ const ContactMe = () => {
                     <div className="animate-fade-in">
                       <div className="text-cyan-400 mb-1">? What is your name?</div>
                       <div className="flex items-center">
-                        <span className="text-blue-500 mr-2">❯</span>
+                        <span className="mr-2 text-cyan-400">❯</span>
                         <input
                           ref={nameInputRef}
                           type="text"
@@ -255,7 +269,7 @@ const ContactMe = () => {
                           value={formData.name}
                           onChange={handleChange}
                           onKeyDown={(e) => handleKeyDown(e, 'name')}
-                          className="bg-transparent border-none outline-none text-white w-full font-mono placeholder-gray-700 caret-blue-500"
+                          className="w-full border-none bg-transparent font-mono text-white outline-none caret-cyan-400 placeholder-gray-700"
                           placeholder="Type name and press Enter..."
                           autoComplete="off"
                         />
@@ -268,7 +282,7 @@ const ContactMe = () => {
                     <div className="animate-fade-in">
                       <div className="text-cyan-400 mb-1">? What is your email address?</div>
                       <div className="flex items-center">
-                        <span className="text-blue-500 mr-2">❯</span>
+                        <span className="mr-2 text-cyan-400">❯</span>
                         <input
                           ref={emailInputRef}
                           type="email"
@@ -276,7 +290,7 @@ const ContactMe = () => {
                           value={formData.email}
                           onChange={handleChange}
                           onKeyDown={(e) => handleKeyDown(e, 'email')}
-                          className="bg-transparent border-none outline-none text-white w-full font-mono placeholder-gray-700 caret-blue-500"
+                          className="w-full border-none bg-transparent font-mono text-white outline-none caret-cyan-400 placeholder-gray-700"
                           placeholder="Type email and press Enter..."
                           autoComplete="off"
                         />
@@ -289,14 +303,14 @@ const ContactMe = () => {
                     <div className="animate-fade-in">
                       <div className="text-cyan-400 mb-1">? What is your message?</div>
                       <div className="flex items-start">
-                        <span className="text-blue-500 mr-2 mt-1">❯</span>
+                        <span className="mr-2 mt-1 text-cyan-400">❯</span>
                         <textarea
                           ref={messageInputRef}
                           name="message"
                           value={formData.message}
                           onChange={handleChange}
                           onKeyDown={(e) => handleKeyDown(e, 'message')}
-                          className="bg-transparent border-none outline-none text-white w-full font-mono placeholder-gray-700 resize-none h-24 caret-blue-500"
+                          className="h-24 w-full resize-none border-none bg-transparent font-mono text-white outline-none caret-cyan-400 placeholder-gray-700"
                           placeholder="Type message and press Enter to send..."
                         />
                       </div>
@@ -305,7 +319,7 @@ const ContactMe = () => {
                   )}
 
                   {step === 4 && (
-                    <div className="flex items-center gap-2 text-blue-400 animate-pulse">
+                    <div className="flex animate-pulse items-center gap-2 text-cyan-300">
                       <span className="animate-spin">⟳</span> Processing request...
                     </div>
                   )}
@@ -317,6 +331,7 @@ const ContactMe = () => {
                 )}
               </div>
             </div>
+          </div>
           </div>
         </div>
       </div>
