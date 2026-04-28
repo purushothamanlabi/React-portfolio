@@ -106,7 +106,7 @@ const LandingPage = () => {
   const [hoveredPlatform, setHoveredPlatform] = useState(null);
 
   return (
-    <section className="relative flex min-h-screen flex-col items-center justify-center overflow-hidden px-4 max-w-7xl mx-auto max-h-[900px]">
+    <section id="home" className="relative flex min-h-screen flex-col items-center justify-center overflow-hidden px-4 max-w-7xl mx-auto max-h-[900px]">
       <FloatingElement
         delay={0}
         className="absolute left-[8%] top-[18%] z-10 sm:left-[15%] sm:top-[20%]"
