@@ -218,9 +218,12 @@ const LandingPage = () => {
             transition={{ duration: 0.8, delay: 0.4, ease: "easeOut" }}
             className="relative z-10 mx-auto flex w-full max-w-xs flex-row justify-between gap-3 sm:max-w-none sm:flex-row sm:justify-center sm:gap-4"
           >
-            <button className="w-1/2 rounded-full bg-blue-600 px-4 py-2 font-medium text-white transition-colors hover:bg-blue-700 sm:w-auto sm:px-8 sm:py-3">
+            <a
+              href="#contact"
+              className="w-1/2 rounded-full bg-blue-600 px-4 py-2 text-center font-medium text-white transition-colors hover:bg-blue-700 sm:w-auto sm:px-8 sm:py-3"
+            >
               Hire me
-            </button>
+            </a>
             <a
               href={resumePdf}
               download="Purushothaman-CV.pdf"

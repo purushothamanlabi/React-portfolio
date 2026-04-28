@@ -2,15 +2,15 @@ import { motion as Motion } from 'framer-motion';
 import { useState } from 'react';
 
 const tabs = [
-  { id: 'basic', label: 'Basic' },
+  { id: 'profile', label: 'Profile' },
   { id: 'education', label: 'Education' },
-  { id: 'interest', label: 'Interest' },
+  { id: 'interests', label: 'Interests' },
 ];
 
 const stats = [
-  { value: '1+', label: 'Years Exp.' },
+  { value: '1.5+', label: 'Years Exp.' },
   { value: '3+', label: 'Featured Projects' },
-  { value: '4+', label: 'Certifications' },
+  { value: '5+', label: 'Certifications' },
   { value: '2', label: 'Roles Held' },
 ];
 
@@ -48,14 +48,14 @@ const tabContentVariants = {
 };
 
 const About = () => {
-  const [activeTab, setActiveTab] = useState('basic');
+  const [activeTab, setActiveTab] = useState('profile');
 
   const renderContent = () => {
     switch (activeTab) {
-      case 'basic':
+      case 'profile':
         return (
           <Motion.div
-            key="basic"
+            key="profile"
             initial="hidden"
             animate="visible"
             variants={tabContentVariants}
@@ -113,10 +113,10 @@ const About = () => {
           </Motion.div>
         );
 
-      case 'interest':
+      case 'interests':
         return (
           <Motion.div
-            key="interest"
+            key="interests"
             initial="hidden"
             animate="visible"
             variants={tabContentVariants}
@@ -214,11 +214,10 @@ const About = () => {
                     <button
                       key={tab.id}
                       onClick={() => setActiveTab(tab.id)}
-                      className={`flex-1 rounded-md px-3 py-2.5 text-sm font-semibold transition-colors duration-200 ${
-                        activeTab === tab.id
-                          ? 'bg-cyan-400 text-slate-950'
-                          : 'text-slate-400 hover:bg-slate-800/50 hover:text-slate-100'
-                      }`}
+                      className={`flex-1 rounded-md px-3 py-2.5 text-sm font-semibold transition-colors duration-200 ${activeTab === tab.id
+                        ? 'bg-cyan-400 text-slate-950'
+                        : 'text-slate-400 hover:bg-slate-800/50 hover:text-slate-100'
+                        }`}
                     >
                       {tab.label}
                     </button>

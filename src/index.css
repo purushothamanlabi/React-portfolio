@@ -4,6 +4,10 @@ html {
   scroll-behavior: smooth;
 }
 
+section {
+  scroll-margin-top: 80px;
+}
+
 body {
   background-color: #0f1115;
   color: var(--text-primary);

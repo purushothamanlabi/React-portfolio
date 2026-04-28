@@ -61,7 +61,23 @@ const Experience = () => {
   const wheelDeltaRef = useRef(0);
   const lastStepAtRef = useRef(0);
   const [activeJourneyIndex, setActiveJourneyIndex] = useState(0);
+  const [isSectionInView, setIsSectionInView] = useState(false);
   const isDesktop = useDesktopQuery();
+
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        setIsSectionInView(entry.isIntersecting);
+      },
+      { threshold: [0, 0.1, 0.9, 1.0] }
+    );
+
+    if (sectionRef.current) {
+      observer.observe(sectionRef.current);
+    }
+
+    return () => observer.disconnect();
+  }, []);
 
   useEffect(() => {
     activeJourneyRef.current = activeJourneyIndex;
@@ -74,11 +90,13 @@ const Experience = () => {
     if (!section) return undefined;
 
     const setJourneyIndex = (nextIndex) => {
+      if (activeJourneyRef.current === nextIndex) return;
       activeJourneyRef.current = nextIndex;
       setActiveJourneyIndex(nextIndex);
     };
 
     const isSectionActive = () => {
+      if (!isSectionInView) return false;
       const rect = section.getBoundingClientRect();
       return rect.top < window.innerHeight * 0.7 && rect.bottom > window.innerHeight * 0.3;
     };
@@ -140,7 +158,7 @@ const Experience = () => {
       section.removeEventListener('wheel', handleWheel);
       window.removeEventListener('scroll', syncBoundaryIndex);
     };
-  }, [isDesktop]);
+  }, [isDesktop, isSectionInView]);
 
   const experiences = [
     {
@@ -239,7 +257,7 @@ const Experience = () => {
                       {journeyPoints
                         .slice(activeJourneyIndex, activeJourneyIndex + VISIBLE_JOURNEY_COUNT)
                         .map((point, offset) => (
-                          <div key={`${activeJourneyIndex}-${point}`} className="py-4 first:pt-0 last:pb-0">
+                          <div key={point} className="py-4 first:pt-0 last:pb-0">
                             <JourneyPoint
                               point={point}
                               index={activeJourneyIndex + offset}
