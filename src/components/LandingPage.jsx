@@ -2,6 +2,7 @@ import { motion } from "framer-motion";
 import { useState } from "react";
 import TrueFocus from "../Animation/textBlur";
 import resumePdf from "../resume/purushothaman-d.pdf";
+import PreviewWindow from "./PreviewWindow";
 
 const FloatingElement = ({ children, delay = 0, className = "" }) => {
   return (
@@ -102,6 +103,8 @@ const ScrollArrow = () => {
 };
 
 const LandingPage = () => {
+  const [hoveredPlatform, setHoveredPlatform] = useState(null);
+
   return (
     <section className="relative flex min-h-screen flex-col items-center justify-center overflow-hidden px-4 max-w-7xl mx-auto max-h-[900px]">
       <FloatingElement
@@ -159,42 +162,57 @@ const LandingPage = () => {
           />
         </motion.div>
 
-        <div className="mb-4 flex flex-wrap items-center justify-center gap-5 sm:gap-6">
-          <a
-            href="https://www.linkedin.com/in/purushothamanmernd"
-            target="_blank"
-            rel="noopener noreferrer"
-            aria-label="LinkedIn"
-            className="flex items-center gap-2 transition-transform duration-200 hover:scale-110"
-          >
-            <img src="/social/icons8-linkedin-96.png" alt="LinkedIn" className="h-6 w-6 object-contain sm:h-7 sm:w-7" />
-            <span className="text-[0.95rem] font-medium leading-none text-[#0A66C2] sm:text-[1.1rem]">LinkedIn</span>
-          </a>
+        <div className="mb-4 flex flex-wrap items-center justify-center gap-5 sm:gap-6 relative">
+          <div className="relative group">
+            <a
+              href="https://www.linkedin.com/in/purushothamanmernd"
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label="LinkedIn"
+              onMouseEnter={() => setHoveredPlatform('linkedin')}
+              onMouseLeave={() => setHoveredPlatform(null)}
+              className="flex items-center gap-2 transition-transform duration-200 hover:scale-110"
+            >
+              <img src="/social/icons8-linkedin-96.png" alt="LinkedIn" className="h-6 w-6 object-contain sm:h-7 sm:w-7" />
+              <span className="text-[0.95rem] font-medium leading-none text-[#0A66C2] sm:text-[1.1rem]">LinkedIn</span>
+            </a>
+            {hoveredPlatform === 'linkedin' && <PreviewWindow type="linkedin" isVisible={true} />}
+          </div>
 
-          <a
-            href="https://github.com/purushothamanlabi/"
-            target="_blank"
-            rel="noopener noreferrer"
-            aria-label="GitHub"
-            className="flex items-center gap-2 transition-transform duration-200 hover:scale-110"
-          >
-            <img src="/social/icons8-github-90.png" alt="GitHub" className="h-6 w-6 object-contain invert sm:h-7 sm:w-7" />
-            <span className="text-[0.95rem] font-medium leading-none text-white sm:text-[1.1rem]">GitHub</span>
-          </a>
+          <div className="relative group">
+            <a
+              href="https://github.com/purushothamanlabi/"
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label="GitHub"
+              onMouseEnter={() => setHoveredPlatform('github')}
+              onMouseLeave={() => setHoveredPlatform(null)}
+              className="flex items-center gap-2 transition-transform duration-200 hover:scale-110"
+            >
+              <img src="/social/icons8-github-90.png" alt="GitHub" className="h-6 w-6 object-contain invert sm:h-7 sm:w-7" />
+              <span className="text-[0.95rem] font-medium leading-none text-white sm:text-[1.1rem]">GitHub</span>
+            </a>
+            {hoveredPlatform === 'github' && <PreviewWindow type="github" isVisible={true} />}
+          </div>
 
-          <a
-            href="https://www.naukri.com/"
-            target="_blank"
-            rel="noopener noreferrer"
-            aria-label="Naukri"
-            className="flex items-center transition-transform duration-200 hover:scale-110"
-          >
-            <img
-              src="/social/naukri.png"
-              alt="Naukri"
-              className="h-7 w-auto max-w-[4.75rem] object-contain sm:h-8"
-            />
-          </a>
+          <div className="relative group">
+            <a
+              href="https://www.naukri.com/"
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label="Naukri"
+              onMouseEnter={() => setHoveredPlatform('naukri')}
+              onMouseLeave={() => setHoveredPlatform(null)}
+              className="flex items-center transition-transform duration-200 hover:scale-110"
+            >
+              <img
+                src="/social/naukri.png"
+                alt="Naukri"
+                className="h-7 w-auto max-w-[4.75rem] object-contain sm:h-8"
+              />
+            </a>
+            {hoveredPlatform === 'naukri' && <PreviewWindow type="naukri" isVisible={true} />}
+          </div>
         </div>
 
         <motion.div
