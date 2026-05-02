@@ -5,7 +5,7 @@ const Skills = () => {
   const skills = [
     {
       title: "HTML",
-      description: "Semantic markup and structural foundation for modern accessible web applications.",
+      description: "Markup & accessible web structure",
       icon: (
         <img
           width="48"
@@ -17,7 +17,7 @@ const Skills = () => {
     },
     {
       title: "CSS",
-      description: "Advanced styling, responsive layouts, and complex animations using modern CSS features.",
+      description: "Styling, layouts & animations",
       icon: (
         <img
           width="48"
@@ -30,7 +30,7 @@ const Skills = () => {
 
     {
       title: "JavaScript",
-      description: "Modern ES6+ development, asynchronous programming, and DOM manipulation.",
+      description: "ES6+, async & DOM manipulation",
       icon: (
         <img
           width="48"
@@ -43,7 +43,7 @@ const Skills = () => {
 
     {
       title: "React",
-      description: "Building scalable SPAs with hooks, state management, and component architecture.",
+      description: "SPAs, hooks & component architecture",
       icon: (
         <img
           width="48"
@@ -55,7 +55,7 @@ const Skills = () => {
     },
     {
       title: "Next.js",
-      description: "React framework for production-ready full stack applications",
+      description: "Full-stack React framework",
       icon: (
         <img
           width="48"
@@ -69,7 +69,7 @@ const Skills = () => {
 
     {
       title: "Redux",
-      description: "State management for complex applications",
+      description: "Predictable state management",
       icon: (
         <img
           width="48"
@@ -81,7 +81,7 @@ const Skills = () => {
     },
     {
       title: "React Router",
-      description: "Routing library for building single-page React navigation",
+      description: "Client-side routing for React",
       icon: (
         <img
           width="48"
@@ -93,7 +93,7 @@ const Skills = () => {
     },
     {
       title: "Tailwind CSS",
-      description: "Utility-first CSS framework for rapid UI development",
+      description: "Utility-first CSS framework",
       icon: (
         <img
           width="48"
@@ -105,7 +105,7 @@ const Skills = () => {
     },
     {
       title: "Axios",
-      description: "Promise-based HTTP client for API communication",
+      description: "HTTP client for API calls",
       icon: (
         <img
           width="48"
@@ -117,7 +117,7 @@ const Skills = () => {
     },
     {
       title: "Authorization",
-      description: "Authorization for protected user information",
+      description: "JWT & secure authentication",
       icon: (
         <img
           width="48"
@@ -129,7 +129,7 @@ const Skills = () => {
     },
     {
       title: "Node.js",
-      description: "Server-side JavaScript runtime for scalable applications",
+      description: "Server-side JavaScript runtime",
       icon: (
         <img
           width="48"
@@ -141,8 +141,7 @@ const Skills = () => {
     },
     {
       title: "NestJS",
-      description:
-        "Progressive Node.js framework for building server-side applications",
+      description: "Progressive Node.js framework",
       icon: (
         <img
           width="48"
@@ -153,21 +152,21 @@ const Skills = () => {
       ),
     },
     {
-      title: "Fast API",
-      description: "Fast API for backend development with Python",
+      title: "MongoDB",
+      description: "NoSQL document database",
       icon: (
         <img
           width="48"
           height="48"
-          src="/FastAPI.png"
-          alt="fastapi"
+          src="https://img.icons8.com/color/48/mongodb.png"
+          alt="mongodb"
         />
       ),
     },
 
     {
       title: "MySQL",
-      description: "Relational database management system",
+      description: "Relational database system",
       icon: (
         <img
           width="48"
@@ -179,7 +178,7 @@ const Skills = () => {
     },
     {
       title: "PostgreSQL",
-      description: "Open-source relational database for reliable application data storage",
+      description: "Advanced relational database",
       icon: (
         <img
           width="48"
@@ -192,7 +191,7 @@ const Skills = () => {
 
     {
       title: "Python",
-      description: "I use Python for backend development and automation",
+      description: "Backend development & automation",
       icon: (
         <img
           width="48"
@@ -205,8 +204,7 @@ const Skills = () => {
 
     {
       title: "TypeScript",
-      description:
-        "TypeScript is a superset of JavaScript that adds static typing to the language.",
+      description: "Typed superset of JavaScript",
       icon: (
         <img
           width="48"
@@ -219,8 +217,7 @@ const Skills = () => {
 
     {
       title: "Stripe",
-      description:
-        "Stripe is a payment processing platform that allows you to accept payments online.",
+      description: "Online payment processing",
       icon: (
         <img
           width="48"
