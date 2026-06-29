@@ -1,8 +1,56 @@
 import { motion } from "framer-motion";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import TrueFocus from "../Animation/textBlur";
 import resumePdf from "../resume/purushothaman-d.pdf";
 import PreviewWindow from "./PreviewWindow";
+
+const LiveAgeCounter = () => {
+  const [age, setAge] = useState("");
+
+  useEffect(() => {
+    // DOB is 03/08/2003 (August 3, 2003)
+    const birthDate = new Date(2003, 7, 3);
+
+    const updateAge = () => {
+      const now = new Date();
+      const diffInMs = now.getTime() - birthDate.getTime();
+      // Precise length of year in milliseconds (365.25 days)
+      const yearInMs = 365.25 * 24 * 60 * 60 * 1000;
+      setAge((diffInMs / yearInMs).toFixed(9));
+    };
+
+    updateAge();
+    const interval = setInterval(updateAge, 50);
+
+    return () => clearInterval(interval);
+  }, []);
+
+  if (!age) return null;
+
+  return (
+    <motion.div
+      initial={{ opacity: 0, y: 15 }}
+      animate={{ opacity: 1, y: 0 }}
+      transition={{ duration: 0.8, delay: 0.6, ease: "easeOut" }}
+      className="mt-8 flex justify-center"
+    >
+      <div className="inline-flex items-center gap-3.5 rounded-full border border-cyan-500/25 bg-cyan-950/15 px-6 py-2 text-sm text-cyan-100/90 shadow-[0_0_20px_rgba(6,182,212,0.08)] backdrop-blur-md transition-all hover:border-cyan-500/45 hover:shadow-[0_0_25px_rgba(6,182,212,0.15)]">
+        <span className="relative flex h-2 w-2">
+          <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-cyan-400 opacity-75"></span>
+          <span className="relative inline-flex h-2 w-2 rounded-full bg-cyan-500"></span>
+        </span>
+        <span className="font-medium tracking-wide">
+          I've been here for{" "}
+          <span className="font-mono text-cyan-400 font-bold select-all">
+            {age}
+          </span>{" "}
+          years
+        </span>
+      </div>
+    </motion.div>
+  );
+};
+
 
 const FloatingElement = ({ children, delay = 0, className = "" }) => {
   return (
@@ -250,6 +298,7 @@ const LandingPage = () => {
               Download CV
             </a>
           </motion.div>
+          <LiveAgeCounter />
         </div>
       </div>
 
